@@ -1,22 +1,21 @@
 package com.xiaoping.controller.view;
 
-import org.springframework.stereotype.Controller;
+import com.xiaoping.pojo.Rs;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class HomeController {
 	
 	@RequestMapping("/")
 	String home(ModelMap map) {
-		map.put("name", "SpringBootFreeMarker");
-		return "/pages/index";
+		return "msg from home";
 	}
 	
 	@RequestMapping("/index")
-	String index(ModelMap map) {
-		map.put("name", "SpringBootFreeMarker");
-		return "/pages/index";
+	Rs index(ModelMap map) {
+		return Rs.ok("HelloWorld!");
 	}
 	
 	@RequestMapping("/err")
