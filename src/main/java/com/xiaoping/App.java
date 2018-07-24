@@ -1,5 +1,8 @@
 package com.xiaoping;
 
+import com.xiaoping.netty.ServerBootStrap;
+import io.netty.channel.ChannelFuture;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -8,10 +11,14 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import java.net.InetSocketAddress;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class App {
+public class App implements CommandLineRunner{
+
+    @Autowired
+    private ServerBootStrap ws;
     
     public static void main(String[] args) throws Exception {
     	// SpringApplication 将引导我们的应用，启动 Spring，相应地启动被自动配置的 Tomcat web 服务器。
@@ -31,5 +38,27 @@ public class App {
                     .forEach(System.out::println);
 
         };
+    }
+
+    @Bean
+    public ServerBootStrap serverBootStrap(){
+        return new ServerBootStrap();
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("=======>run invoke");
+        InetSocketAddress address = new InetSocketAddress("127.0.0.1", 9090);
+        ChannelFuture future = ws.start(address);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+            @Override
+            public void run() {
+                ws.destroy();
+            }
+        });
+
+        future.channel().closeFuture().syncUninterruptibly();
+
     }
 }
