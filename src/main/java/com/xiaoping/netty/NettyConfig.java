@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NettyConfig {
+
     // 存储所有连接的 channel
     public static ChannelGroup group = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 

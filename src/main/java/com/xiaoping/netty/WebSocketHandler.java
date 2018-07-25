@@ -27,6 +27,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
     private Gson gson = new Gson();
 
     // onmsg
+    // 有信号进来时
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
         if(msg instanceof FullHttpRequest){
@@ -37,12 +38,16 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
     }
 
     // onopen
+    // Invoked when a Channel is active; the Channel is connected/bound and ready.
+    // 当连接打开时，这里表示有数据将要进站。
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         NettyConfig.group.add(ctx.channel());
     }
 
     // onclose
+    // Invoked when a Channel leaves active state and is no longer connected to its remote peer.
+    // 当连接要关闭时
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         broadcastWsMsg( ctx, new WsMessage(-11000, ctx.channel().id().toString() ) );
@@ -50,18 +55,21 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
     }
 
     // onmsgover
+    // Invoked when a read operation on the Channel has completed.
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         ctx.flush();
     }
 
     // onerror
+    // 发生异常时
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
         ctx.close();
     }
 
+    // 集中处理 ws 中的消息
     private void handWsMessage(ChannelHandlerContext ctx, WebSocketFrame msg) {
         if(msg instanceof CloseWebSocketFrame){
             // 关闭指令
@@ -100,6 +108,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
         }
     }
 
+    // 处理 http 请求，WebSocket 初始握手 (opening handshake ) 都始于一个 HTTP 请求
     private void handHttpRequest(ChannelHandlerContext ctx, FullHttpRequest req) {
         if(!req.decoderResult().isSuccess() || !("websocket".equals(req.headers().get("Upgrade")))){
             sendHttpResponse(ctx, new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.BAD_REQUEST));
@@ -114,6 +123,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
         }
     }
 
+    // 响应非 WebSocket 初始握手请求
     private void sendHttpResponse(ChannelHandlerContext ctx,  DefaultFullHttpResponse res) {
         if(res.status().code() != 200){
             ByteBuf buf = Unpooled.copiedBuffer(res.status().toString(), CharsetUtil.UTF_8);
