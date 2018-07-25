@@ -34,7 +34,6 @@ public class ServerBootStrap {
         if(channel != null) {
             channel.close();
         }
-
         NettyConfig.group.close();
         workGroup.shutdownGracefully();
         bossGroup.shutdownGracefully();

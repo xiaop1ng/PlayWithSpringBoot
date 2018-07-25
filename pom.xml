@@ -4,7 +4,7 @@
 	<groupId>com.xiaoping</groupId>
 	<artifactId>springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot</name>
+	<name>PlayWithSpringBoot</name>
 	<description>springboot</description>
 
 	<parent>

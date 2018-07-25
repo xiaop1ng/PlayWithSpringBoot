@@ -74,11 +74,8 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
         }else if(msg instanceof TextWebSocketFrame){
             TextWebSocketFrame message = (TextWebSocketFrame) msg;
             // 文本消息
-//            logger.info("接收到消息：" + message.text());
-
             WsMessage wsMessage = gson.fromJson(message.text(), WsMessage.class);
             logger.info("接收到消息：" + wsMessage);
-            logger.info("t:" + wsMessage.getT());
             switch (wsMessage.getT()){
                 case 1: // 进入房间
                     // 给进入的房间的用户响应一个欢迎消息，向其他用户广播一个有人进来的消息
