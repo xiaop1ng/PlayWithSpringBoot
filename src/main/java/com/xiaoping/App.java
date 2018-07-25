@@ -19,17 +19,18 @@ public class App {
         SpringApplication.run(App.class, args);
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
-
-            System.out.println("Let's inspect the beans provided by Spring Boot:");
-
-            String[] beanNames = ctx.getBeanDefinitionNames();
-            Arrays.stream(beanNames)
-                    .sorted()
-                    .forEach(System.out::println);
-
-        };
-    }
+//    打印初始化时 Spring 容器中所有的 Bean
+//    @Bean
+//    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+//        return args -> {
+//
+//            System.out.println("Let's inspect the beans provided by Spring Boot:");
+//
+//            String[] beanNames = ctx.getBeanDefinitionNames();
+//            Arrays.stream(beanNames)
+//                    .sorted()
+//                    .forEach(System.out::println);
+//
+//        };
+//    }
 }
