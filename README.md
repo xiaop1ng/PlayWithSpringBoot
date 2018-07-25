@@ -1,12 +1,10 @@
 # PlayWithSpringBoot
-> Spring 主要解决了对象之间协作关系（依赖）的管理和对业务间的共同步骤的抽取问题。
-解决这些问题的同时也创造了一些小小的问题，我们编写 Spring 应用程序时往往需要大量的配置工作，当然这也很正常：一个精密的仪器往往也需要小心协调配置才能正确工作。
-SpringBoot 为此而生，一系列的 `starter` 为我们解决了大量的配置工作。人类的进化史好像也是如此，进化的过程往往会带来许许多多的‘毛病’，然后我们在解决这些‘毛病’的过程中又会衍生出一些意想不到的‘毛病’，但是这些‘毛病’并不会阻止人类‘进化’的脚步。
-不得不说，Spring 这个优雅的框架是个多么有启发的方法论阿。
 
-# SpringBoot 不仅优雅而且强大（漂亮得不像实力派，是吧？）
-使用之前还是看一下我们的小目标：
-一句话说就是：让 SpringBoot 给我们整一个好使的 web 框架粗来。
-怎么定义好使？
-模板能力(FreeMarker\Thymeleaf\mustache\...)，我们在案例里面使用 FreeMarker；
-DB 能力，数据库连接使用 MySQL， 持久化层使用灵活的 MyBatis，数据库连接池使用阿里的 druid；
+一个学习 SpringBoot & SpringCloud 的 workplace
+
+# History
+
+2018-07-23: init project
+
+2018-07-24: add Netty 使用到 Netty 的 WebSocket 功能
+
