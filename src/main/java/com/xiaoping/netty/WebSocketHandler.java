@@ -1,20 +1,30 @@
 package com.xiaoping.netty;
 
+import com.google.gson.Gson;
+import com.xiaoping.pojo.WsMessage;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.websocketx.*;
+import io.netty.util.AttributeKey;
 import io.netty.util.CharsetUtil;
-
-import java.util.Date;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
 
     private WebSocketServerHandshaker handshaker;
+
+    private static final Logger logger = LoggerFactory.getLogger(WebSocketHandler.class);
+
+    private Gson gson = new Gson();
 
     // onmsg
     @Override
@@ -35,6 +45,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
     // onclose
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        broadcastWsMsg( ctx, new WsMessage(-11000, ctx.channel().id().toString() ) );
         NettyConfig.group.remove(ctx.channel());
     }
 
@@ -63,9 +74,32 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
         }else if(msg instanceof TextWebSocketFrame){
             TextWebSocketFrame message = (TextWebSocketFrame) msg;
             // 文本消息
-            System.out.println("收到消息" + message.text());
-            System.out.println(NettyConfig.group.size());
-            NettyConfig.group.writeAndFlush(new TextWebSocketFrame(new Date().toString()));
+//            logger.info("接收到消息：" + message.text());
+
+            WsMessage wsMessage = gson.fromJson(message.text(), WsMessage.class);
+            logger.info("接收到消息：" + wsMessage);
+            logger.info("t:" + wsMessage.getT());
+            switch (wsMessage.getT()){
+                case 1: // 进入房间
+                    // 给进入的房间的用户响应一个欢迎消息，向其他用户广播一个有人进来的消息
+                    broadcastWsMsg( ctx, new WsMessage(-10001,wsMessage.getN()) );
+                    AttributeKey<String> name = AttributeKey.newInstance(wsMessage.getN());
+                    ctx.channel().attr(name);
+                    ctx.channel().writeAndFlush( new TextWebSocketFrame( gson.toJson(new WsMessage(-1, wsMessage.getN()))));
+                    break;
+
+                case 2: // 发送消息
+                    // 广播消息
+                    broadcastWsMsg( ctx, new WsMessage(-2, wsMessage.getN(), wsMessage.getBody()) );
+                    break;
+                case 3: // 离开房间.
+                    broadcastWsMsg( ctx, new WsMessage(-11000, wsMessage.getN(), wsMessage.getBody()) );
+                    break;
+            }
+
+//            NettyConfig.group.writeAndFlush(new TextWebSocketFrame(new Date().toString()));
+        }else {
+            // donothing, 暂时不处理二进制消息
         }
     }
 
@@ -93,5 +127,14 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
         if(res.status().code() != 200){
             f.addListener(ChannelFutureListener.CLOSE);
         }
+    }
+
+    // 广播 websocket 消息（不给自己发）
+    private void broadcastWsMsg(ChannelHandlerContext ctx, WsMessage msg) {
+        NettyConfig.group.stream()
+                .filter(channel -> channel.id() != ctx.channel().id())
+                .forEach(channel -> {
+                    channel.writeAndFlush( new TextWebSocketFrame( gson.toJson( msg )));
+                });
     }
 }

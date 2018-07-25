@@ -4,3 +4,8 @@ server:
 netty:
   host: "127.0.0.1"
   port: 9090
+
+# 禁用缓存
+spring:
+  thymeleaf:
+    cache: false

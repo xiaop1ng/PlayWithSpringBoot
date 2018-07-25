@@ -7,9 +7,11 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
 
+@Component
 public class ServerBootStrap {
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();
     private final EventLoopGroup workGroup = new NioEventLoopGroup();

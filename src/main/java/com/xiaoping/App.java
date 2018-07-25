@@ -3,18 +3,19 @@ package com.xiaoping;
 import com.xiaoping.netty.NettyConfig;
 import com.xiaoping.netty.ServerBootStrap;
 import io.netty.channel.ChannelFuture;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 import java.net.InetSocketAddress;
-import java.util.Arrays;
 
 @SpringBootApplication
 public class App implements CommandLineRunner{
+
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     @Autowired
     private ServerBootStrap ws;
@@ -25,30 +26,10 @@ public class App implements CommandLineRunner{
         SpringApplication.run(App.class, args);
     }
 
-
-//    打印初始化时 Spring 容器中所有的 Bean
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
-
-            System.out.println("Let's inspect the beans provided by Spring Boot:");
-
-            String[] beanNames = ctx.getBeanDefinitionNames();
-            Arrays.stream(beanNames)
-                    .sorted()
-                    .forEach(System.out::println);
-
-        };
-    }
-
-    @Bean
-    public ServerBootStrap serverBootStrap(){
-        return new ServerBootStrap();
-    }
-
+    // 注意这里的 run 方法是重载自 CommandLineRunner
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("=======>run invoke");
+        logger.info("Netty's ws server is listen: " + NettyConfig.WS_PORT);
         InetSocketAddress address = new InetSocketAddress(NettyConfig.WS_HOST, NettyConfig.WS_PORT);
         ChannelFuture future = ws.start(address);
 

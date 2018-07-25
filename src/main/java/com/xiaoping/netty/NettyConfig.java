@@ -15,7 +15,7 @@ public class NettyConfig {
 
     public static int WS_PORT;
 
-    // spring boot不允许/不支持把值注入到静态变量中 所以采用 setter 的方式注入
+    // spring boot 不允许/不支持把值注入到静态变量中 所以采用 setter 的方式注入
     @Value("${netty.host}")
     public void setWS_HOST(String host) {
         this.WS_HOST = host;
