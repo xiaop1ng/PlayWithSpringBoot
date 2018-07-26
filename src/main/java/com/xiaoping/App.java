@@ -29,17 +29,16 @@ public class App implements CommandLineRunner{
     // 注意这里的 run 方法是重载自 CommandLineRunner
     @Override
     public void run(String... args) throws Exception {
+
         logger.info("Netty's ws server is listen: " + NettyConfig.WS_PORT);
         InetSocketAddress address = new InetSocketAddress(NettyConfig.WS_HOST, NettyConfig.WS_PORT);
         ChannelFuture future = ws.start(address);
-
         Runtime.getRuntime().addShutdownHook(new Thread(){
             @Override
             public void run() {
                 ws.destroy();
             }
         });
-
         future.channel().closeFuture().syncUninterruptibly();
 
     }

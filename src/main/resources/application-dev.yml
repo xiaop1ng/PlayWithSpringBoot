@@ -9,22 +9,3 @@ netty:
 spring:
   thymeleaf:
     cache: false
-  dubbo:
-    protocol:
-      port: 20880
-      name: dubbo
-    application:
-      name: hello-world-app
-    registry:
-      address: zookeeper://127.0.0.1:2181
-    scan: com.xiaoping.service
-# 配置 Dubbo
-dubbo:
-  protocol:
-    prot: 20880
-    name: dubbo
-  application:
-    name: hello-world-app
-  registry:
-    address: zookeeper://127.0.0.1:2181
-  scan: com.xiaoping.service
