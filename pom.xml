@@ -95,6 +95,34 @@
 			<artifactId>log4j</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!--<dependency>-->
+			<!--<groupId>com.alibaba</groupId>-->
+			<!--<artifactId>druid</artifactId>-->
+			<!--<version>1.0.20</version>-->
+		<!--</dependency>-->
+
+		<!--&lt;!&ndash; hibernate-core &ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>org.hibernate</groupId>-->
+			<!--<artifactId>hibernate-core</artifactId>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework</groupId>-->
+			<!--<artifactId>spring-orm</artifactId>-->
+		<!--</dependency>-->
+
 
 	</dependencies>
 </project>

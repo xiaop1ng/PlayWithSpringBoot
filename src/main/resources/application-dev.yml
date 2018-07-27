@@ -7,5 +7,12 @@ netty:
 
 # 禁用缓存
 spring:
+  # 配置 thymeleaf 在开发环境禁用缓存
   thymeleaf:
     cache: false
+  # 数据源
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mbs
+    username: root
+    password: 123789
+    driver-class-name: com.mysql.jdbc.Driver
