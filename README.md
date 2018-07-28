@@ -2,7 +2,7 @@
 
 一个学习 SpringBoot & SpringCloud 的 workplace
 
-# Get & Run
+# Start
 > git clone https://github.com/xiaop1ng/PlayWithSpringBoot.git
 
 使用 `Maven` 构建项目，`main` 程序在 `com.xiaoping.App.java`
