@@ -19,6 +19,8 @@
 
 
 # History
+2018-07-30: 添加了 swagger2 （构建 API 文档工具）
+
 2018-07-27: DB 能力
 
 2018-07-26: 添加了 Dubbo + ZooKeeper 的依赖
