@@ -5,6 +5,9 @@ netty:
   host: 127.0.0.1
   port: 9090
 
+upload:
+  rootpath: upload-dir
+
 # 禁用缓存
 spring:
   # 配置 thymeleaf 在开发环境禁用缓存
