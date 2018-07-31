@@ -126,5 +126,12 @@
 			<version>2.9.2</version>
 		</dependency>
 
+		<!-- 操作文档 -->
+		<dependency>
+			<groupId>org.docx4j</groupId>
+			<artifactId>docx4j</artifactId>
+			<version>6.0.0</version>
+		</dependency>
+
 	</dependencies>
 </project>
