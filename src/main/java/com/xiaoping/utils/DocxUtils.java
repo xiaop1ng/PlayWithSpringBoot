@@ -7,7 +7,6 @@ import org.docx4j.wml.Text;
 
 import javax.xml.bind.JAXBElement;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,14 +17,14 @@ public class DocxUtils {
     private final static int MODE_REPLACE_ALL = 0;
     private final static int MODE_REPLACE_ONCE = 1;
 
-    private static WordprocessingMLPackage load(String path) throws Docx4JException {
+    public static WordprocessingMLPackage load(String path) throws Docx4JException {
         WordprocessingMLPackage template = WordprocessingMLPackage.load(new File(path));
         tmp = template;
         return template;
     }
 
 
-    private static List<Object> getElements(Object obj, Class<?> toSearch) {
+    public static List<Object> getElements(Object obj, Class<?> toSearch) {
         List<Object> result = new ArrayList<>();
         if (obj instanceof JAXBElement) {
             obj = ((JAXBElement<?>) obj).getValue();
@@ -42,11 +41,11 @@ public class DocxUtils {
         return result;
     }
 
-    private static void attr(String placeholder, String value){
+    public static void attr(String placeholder, String value){
         attr(placeholder, value, MODE_REPLACE_ONCE);
     }
 
-    private static void attr(String placeholder, String value, int mode) {
+    public static void attr(String placeholder, String value, int mode) {
         if(texts == null) {
             texts = getElements(tmp.getMainDocumentPart(), Text.class);// holder
         }
@@ -59,16 +58,17 @@ public class DocxUtils {
         }
     }
 
-    private static void save(String target) throws Docx4JException {
+    public static void save(String target) throws Docx4JException {
         File f = new File(target);
         tmp.save(f);
     }
 
-    public static void main(String[] args) throws IOException, Docx4JException {
-        WordprocessingMLPackage wordTemplate = load("src/main/resources/template.docx");
-        attr("{{Line1}}", "Hello");
-        attr("{{Line2}}", "World!");
-        attr("{{Name}}", "Xiaop1ng", MODE_REPLACE_ALL);
-        save("src/main/resources/tempFile.docx");
-    }
+    // Test method.
+//    public static void main(String[] args) throws IOException, Docx4JException {
+//        WordprocessingMLPackage wordTemplate = load("src/main/resources/template.docx");
+//        attr("{{Line1}}", "Hello");
+//        attr("{{Line2}}", "World!");
+//        attr("{{Name}}", "Xiaop1ng", MODE_REPLACE_ALL);
+//        save("src/main/resources/tempFile.docx");
+//    }
 }
