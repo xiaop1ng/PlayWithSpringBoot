@@ -19,3 +19,7 @@ spring:
     username: root
     password: 123789
     driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: MYSQL
+    show-sql: true
+
