@@ -23,5 +23,18 @@ spring:
     database: MYSQL
     show-sql: true
 
+# info 配置项（/actuator/info）
 info:
-  name: xiaop1ng
+  author: xiaop1ng
+  email: jianchaoping@gmail.com
+  version: 1.0.0
+
+# 配置 actuator 加载所有的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
