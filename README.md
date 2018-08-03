@@ -19,6 +19,9 @@
 
 
 # History
+2018-08-03: 添加了 actuator （系统监控）
+> http://127.0.0.1/actuator/health
+
 2018-07-30: 添加了 swagger2 （构建 API 文档工具）
 
 2018-07-27: DB 能力

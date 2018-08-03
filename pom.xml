@@ -20,6 +20,12 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- SpringBoot actuator starter -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 		<!-- thymeleaf 模板引擎 starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

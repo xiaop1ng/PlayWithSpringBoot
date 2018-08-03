@@ -23,3 +23,5 @@ spring:
     database: MYSQL
     show-sql: true
 
+info:
+  name: xiaop1ng

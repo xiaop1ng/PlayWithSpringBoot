@@ -1,5 +1,5 @@
 server:
-  port: 3001
+  port: 80
 
 netty:
   host: "127.0.0.1"
