@@ -19,6 +19,7 @@
 
 
 # History
+2018-08-07: 添加了数据库连接池
 2018-08-03: 添加了 actuator （系统监控）
 > http://127.0.0.1/actuator/health
 

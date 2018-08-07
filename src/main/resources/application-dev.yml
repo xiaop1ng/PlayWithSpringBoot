@@ -19,6 +19,12 @@ spring:
     username: root
     password: ping1234
     driver-class-name: com.mysql.jdbc.Driver
+    # 配置数据库连接池
+    druid:
+      initial-size: 50
+      max-active: 1000
+      min-idle: 50
+      max-wait: 60000
   jpa:
     database: MYSQL
     show-sql: true
