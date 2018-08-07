@@ -15,7 +15,7 @@ spring:
     cache: false
   # 数据源
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/mbs
+    url: jdbc:mysql://127.0.0.1:3306/school
     username: root
     password: ping1234
     driver-class-name: com.mysql.jdbc.Driver
