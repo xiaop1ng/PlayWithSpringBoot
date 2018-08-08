@@ -32,6 +32,12 @@
 			<artifactId>spring-boot-starter-log4j</artifactId>
 		</dependency>
 
+		<!-- SpringBoot email starter -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
 		<!-- thymeleaf 模板引擎 starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

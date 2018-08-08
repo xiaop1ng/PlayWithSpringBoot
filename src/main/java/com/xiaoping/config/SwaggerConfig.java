@@ -1,5 +1,6 @@
 package com.xiaoping.config;
 
+import org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -23,6 +24,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build();
     }
+
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
