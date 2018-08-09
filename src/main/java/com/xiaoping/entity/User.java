@@ -1,5 +1,8 @@
 package com.xiaoping.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,8 +21,10 @@ public class User {
     private String sex;
     private String introduce;
     @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date lastLoginTime;
 
     public User(String userName, String password, String displayName, String email, String phone, String protrait, String sex, String introduce) {

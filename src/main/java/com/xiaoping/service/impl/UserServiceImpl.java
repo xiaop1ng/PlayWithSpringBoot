@@ -6,8 +6,6 @@ import com.xiaoping.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -16,9 +14,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(User user) {
-        Date now = new Date();
-        user.setCreateTime(now);
-        user.setLastLoginTime(now);
         user.setDisplayName(user.getUserName());
         return userDao.save(user);
     }
