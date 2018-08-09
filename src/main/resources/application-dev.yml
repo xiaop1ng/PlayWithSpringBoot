@@ -30,9 +30,9 @@ spring:
     show-sql: true
   # email
   mail:
-    host: 'smtp.163.com'
-    username: '13227379709@163.com'
-    password: 'abcd1234'
+    host: smtp.163.com
+    username: 13227379709@163.com
+    password: abcd1234
     properties:
       mail:
         smtp:
