@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Styles>
+    <Style ss:ID="Default" ss:Name="Normal">
+      <Alignment ss:Vertical="Center"/>
+      <Font ss:FontName="宋体" x:CharSet="134" ss:Size="11" ss:Color="#000000"/>
+    </Style>
+    <Style ss:ID="sshortDate">
+      <NumberFormat ss:Format="Short Date"/>
+    </Style>
+    <Style ss:ID="snormalDate">
+      <NumberFormat ss:Format="yyyy/m/d\ h:mm;@"/>
+    </Style>
+    <Style ss:ID="smoneyStyle">
+      <NumberFormat ss:Format="Standard"/>
+    </Style>
+  </Styles>
+  <Null/>
+  <Worksheet ss:Name="账务组合查询1">
+    <Null/>
+    <Table ss:ExpandedColumnCount="100" ss:ExpandedRowCount="1000000" ss:DefaultColumnWidth="54.0" ss:DefaultRowHeight="13.5">
+      <Null/><Row>
+  <Cell>
+    <Data ss:Type="String">#账号：ybzx@vip.163.com[20880310539125520156]</Data>
+  </Cell>
+</Row><Row>
+  <Cell>
+    <Data ss:Type="String">#查询起始日期：2018-08-10 00:00:00查询终止日期：2018-08-15 00:00:00</Data>
+  </Cell>
+</Row><Row>
+  <Cell>
+    <Data ss:Type="String">序号</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">入账时间</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">支付宝交易号</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">支付宝流水号</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">商户订单号</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">账务类型</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">收入（+元）</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">支出（-元）</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">账户余额（元）</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">服务费（元）</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">支付渠道</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">签约产品</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">对方账户</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">对方名称</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">银行订单号</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">商品名称</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">备注</Data>
+  </Cell>
+</Row><Row>
+  <Cell>
+    <Data ss:Type="String">1</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">2018-08-10 17:22:43</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">20180810200040011100860040499860</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">307338943461861</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">转账</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">300.00</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">226784.58</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">0.00</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">135******82</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">*钰荣</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">转账</Data>
+  </Cell>
+</Row><Row>
+  <Cell>
+    <Data ss:Type="String">2</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">2018-08-10 11:48:08</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">20180810200040011100620041441667</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">308043794764621</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">转账</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">3273.33</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">226484.58</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">0.00</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">411***@qq.com</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">*镇海</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">转账</Data>
+  </Cell>
+</Row><Row>
+  <Cell>
+    <Data ss:Type="String">3</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">2018-08-10 11:40:46</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">20180810200040011100210037254012</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">306969986738211</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">转账</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">3928.00</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">223211.25</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">0.00</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">136******52</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">*铭伟</Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String"> </Data>
+  </Cell>
+  <Cell>
+    <Data ss:Type="String">杜铭伟</Data>
+  </Cell>
+</Row><Row>
+  <Cell>
+    <Data ss:Type="String">#导出时间：2018-08-14 10:37:14</Data>
+  </Cell>
+</Row>
+    </Table>
+  </Worksheet>
+</Workbook>
