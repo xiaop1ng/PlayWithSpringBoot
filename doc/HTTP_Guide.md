@@ -41,4 +41,4 @@ MIME 类型 (Multipurpose Internet Mail Extension) 是一种文本标记，表�
 
 # 报文和实体
 
-报文是快递盒子，实体是货物
+报文是快递盒子，实体是货物。
