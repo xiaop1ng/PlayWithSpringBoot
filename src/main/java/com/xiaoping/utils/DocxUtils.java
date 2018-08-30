@@ -63,7 +63,7 @@ public class DocxUtils {
         tmp.save(f);
     }
 
-    // Test method.
+    // cmdtest method.
 //    public static void main(String[] args) throws IOException, Docx4JException {
 //        WordprocessingMLPackage wordTemplate = load("src/main/resources/template.docx");
 //        attr("{{Line1}}", "Hello");

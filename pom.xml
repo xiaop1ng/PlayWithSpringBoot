@@ -38,6 +38,13 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
+		<!-- SpringBoot test starter -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- thymeleaf 模板引擎 starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

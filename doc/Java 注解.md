@@ -30,7 +30,7 @@ public @interface MyAnnotation {
 public class Test{
 }
 ```
-我们在 Test 类上面使用了 `@MyAnnotation` 注解，这个行为可以理解为我们在 Test 类上贴上了 `@MyAnnotation` 这个标签
+我们在 cmdtest 类上面使用了 `@MyAnnotation` 注解，这个行为可以理解为我们在 cmdtest 类上贴上了 `@MyAnnotation` 这个标签
 
 ## 元注解
 

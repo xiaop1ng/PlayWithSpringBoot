@@ -72,6 +72,15 @@ private long joinTime;
 
 创建时间和更新时间自动维护
 
+#### Criteria
+
+Criteria 检索实体的对象
+
+```
+session.createCriteria(Cat.class);
+```
+
+`createAlias();` 重新定义一个别名
 
 
 #### 官方指南

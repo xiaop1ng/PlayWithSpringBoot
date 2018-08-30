@@ -21,7 +21,7 @@ MIME 类型 (Multipurpose Internet Mail Extension) 是一种文本标记，表�
 
 一个常见的 `URL` 由三部分组成
 
-- 协议头 （https://）
+- 协议头 （ https:// ）
 - 服务器所在域因特网地址 （wikipedia.org）
 - 指定服务器上的某个资源 （/wiki/Hypertext_Transfer_Protocol）
 
