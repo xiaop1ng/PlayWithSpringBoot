@@ -20,7 +20,7 @@ import java.util.List;
 public class ExcelController {
 
 
-    public static void main(String[] args) throws IOException {
+//    public static void main(String[] args) throws IOException {
 
         // 1. 写到 Excel
         // writeToExcel("Hello POI!");
@@ -29,8 +29,8 @@ public class ExcelController {
 //                "amount", "手续费", "accountName", "accountNo", "失败原因", "开始时间", "payTime", "remark"};
 //        String s = "accountName";
 //        System.out.println(Arrays.binarySearch(arr, s));
-        readExcel();
-    }
+//        readExcel();
+//    }
 
     public static void writeToExcel(String value) throws IOException {
         // 文档对象

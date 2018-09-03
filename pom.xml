@@ -38,13 +38,6 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
-		<!-- SpringBoot test starter -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
 		<!-- thymeleaf 模板引擎 starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -186,6 +179,13 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-scratchpad</artifactId>
 			<version>3.15</version>
+		</dependency>
+
+		<!-- memcached -->
+		<dependency>
+			<groupId>spy</groupId>
+			<artifactId>memcached</artifactId>
+			<version>2.4rc1</version>
 		</dependency>
 
 	</dependencies>

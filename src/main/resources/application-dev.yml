@@ -56,3 +56,15 @@ management:
   endpoint:
     health:
       show-details: always
+
+# 配置 Memcache
+memcache:
+  servers: 114.67.231.183:11211
+  failover: true
+  initConn: 100
+  minConn: 20
+  maxConn: 1000
+  maintSleep: 50
+  nagel: false
+  socketTO: 3000
+  aliveCheck: true

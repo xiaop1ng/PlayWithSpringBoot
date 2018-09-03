@@ -19,6 +19,8 @@
 
 
 # History
+2018-09-03: memcached
+
 2018-08-09: 添加了 email 的 starter
 
 2018-08-07: 添加了数据库连接池
