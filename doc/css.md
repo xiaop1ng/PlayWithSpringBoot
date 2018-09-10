@@ -1,0 +1,78 @@
+# CSS
+
+CSS（Cascading Style Sheets），即层叠样式表，或这级联样式表。
+
+### CSS 的几种类型
+- 内联样式表
+
+即写在某个标签内的样式，在标签内编写的样式能影响的范围最小。
+> `<div style="display: block;">Block</div>`
+
+- 内部样式表
+
+写在文件内部的 style 标签
+> `<style type="text/css">...</style>`
+
+- 外部样式表
+
+使用外部链接引入的样式文件
+
+> `<link rel="stylesheet" type="text/css" href="xxx.min.css" />`
+
+### 选择符
+- 类型选择符（Type Selectors）是以文档中的对象名作为选择符名。
+
+> `a {text-decoration:none;}　/*无下划线*/`
+
+- 类选择符使用文档中 `class` 属性值作为选择符名。
+> `.classname {color: red;}`
+
+- ID 选择符使用文档中 `id` 属性值作为选择符名。
+> `#idname {font-weight: bold;}`
+
+- 包含选择符为一个特定的结构创建样式
+> `p a {text-decoration: line-through;} /*贯穿线*/`
+
+- 选择符分组为一组特定的节点创建样式
+> `h1, h2, h3, h4, h5, h6 {text-decoration: underline;} /*下划线*/`
+
+- 通用选择符 `*`
+
+- 子选择符为其子节点（不能跨级作用）创建样式
+> `div > b {font-style: italic; /*斜体*/}`
+
+- 相邻选择符为相邻的两个兄弟节点创建样式
+> `div + span {overfolw: hidden; /*将超出元素框之外的内容剪裁掉*/}`
+
+- 属性选择符为包含特定属性的节点创建样式
+> `p[align="center"] {font-size: 24px;}`
+
+### 伪类（pseudo-class）和伪元素（pseudo-element）
+伪类指某个元素的某个状态，如超链接存在四个状态（未被点击，鼠标经过，鼠标点击、已访问过）。
+伪元素指某个对象中某个元素的状态，如一行文字中的第一个字符等。
+
+```
+a:visited {...} /*已被访问*/
+a:active {...} /*点击*/
+a:hover {...} /*鼠标经过*/
+a:link {...} /*未被访问*/
+
+p:first-letter {font-size: 200%;} /*首字*/
+div:first-line {text-decoration: underline;} /*首行*/
+```
+上面的冒号（`:`）就是伪类和伪元素的标记符
+
+### CSS 优先级
+在 css 中拥有如此之多的选择符，也就意味着很有可能一个节点被多个选择符匹配到，在CSS中为每种不同类型的样式选择符都有一个特殊性（specificity），特殊性使用相对权重（weight）（也就是优先级）来描述不同的样式选择符。CSS可以根据产生冲突的样式选择符的权重来判断使用哪种样式，通常是选择权重大的样式而忽略权重小的样式。
+- 类型选择符（E）的权重为：0001。
+- 类选择符（.classname）的权重为：0010。
+- ID选择符（#idname）的权重为：0100。
+- 通用选择符（*）的权重为：0000。
+- 子选择符的权重为：0000。
+- 属性选择符（[attr]）的权重为：0010。
+- 伪类选择符（:pseudo-classes）的权重为：0010。
+- 伪元素（:pseudo-elements）的权重为：0001。
+- 包含选择符：包含的选择符权重值之和。
+- 内联样式的权重为：1000。
+- 继承的样式的权重为：0000。
+以上权重由大到小依次是：1000、0100、0010、0001、0000。
