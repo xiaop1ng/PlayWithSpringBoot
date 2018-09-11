@@ -94,3 +94,76 @@ div:first-line {text-decoration: underline;} /*首行*/
 ![](https://ww1.sinaimg.cn/large/005YhI8igy1fv5cl4suecj30ow0bv74q)
 - 字间距 `letter-spacing`
 - 词间距 `word-spacing`
+
+### 背景与边距
+- 背景颜色 `background-color`
+- 背景图 `background-image`
+> `background-image:url(pic03.jpg)`
+
+- 背景图滚动/固定 `background-attachment: scroll|fixed|inherit`
+- 平铺方式 `background-repeat`
+- 图像定位 `background-position`
+- 边框样式 `border-style`
+- 边框宽度 `border-width`
+- 边框颜色 `border-color`
+- 内边距 `margin`
+- 外边距 `padding`
+
+### 表格
+- 合并表格边框 `border-collapse`
+- 表格边框间距 `border-spacing`
+- 表格标题位置 `caption-side`
+- 表格布局样式 `table-layout`
+
+### 列表
+- 列表样式 `list-style-type`
+- 使用图标作为列表样式 `list-style-image`
+- 列表符号显示位置 `list-style-position`
+- 列表综合样式 `list-style`
+
+### 滚动条
+- 滚动条颜色 `scrollbar-face-color`
+- 滚动条边框颜色 `scrollbar-highlight-color`
+- 暗边框颜色 `scrollbar-shadow-color`
+
+### 块级元素和内联元素
+块级元素生成的是一个矩形框，并且和相邻的块级元素依次竖直排列，不会排在同一行。
+内联元素的显示特点就是像文本一样的显示，各个元素之间横向排列，到最右端自动换行，不会独自占据一行。
+
+### `<div>` 元素与 `<span>` 元素
+`<div>` 是一个标准的块级元素， `<span>` 是一个内联元素。他们均作为容器标记可以容纳各种 `html` 元素。
+
+### 定位方式
+`position : static | relative | absolute| inherit`
+- static 静态定位
+- relative 相对定位
+- absolute 绝对定位
+- inherit 继承父级
+
+### 层叠次序
+`z-index` 拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面
+
+### 浮动
+通常在一个网页文档里，文档流都是从上到下、由左而右流动的。对于内联元素而言，创建了一个元素之后，会在其右接着创建其他元素；对于块级元素而言，在创建了一个元素之后，会在其下方接着创建其他元素。CSS中的浮动可以让某些元素脱离这种文档流的方式。
+
+> `float : left | right | none`
+- left 左浮动
+- right 右浮动
+- none 不浮动（缺省值）
+
+### 清除浮动
+> `clear : none | left | right | both`
+
+### 溢出内容与剪切
+> `overflow : visible | hidden | scroll | auto | inherit`
+
+### 垂直方向的溢出内容
+> `overflow-y: visible / auto / hidden / scroll`
+
+### 内容的剪切
+> `clip : auto | rect ( 上右下左 ) | inherit`
+
+### 对象显示与隐藏
+> `visibility : visible | hidden | collapse`
+
+
