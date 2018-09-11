@@ -76,3 +76,21 @@ div:first-line {text-decoration: underline;} /*首行*/
 - 内联样式的权重为：1000。
 - 继承的样式的权重为：0000。
 以上权重由大到小依次是：1000、0100、0010、0001、0000。
+
+### 文字样式
+- 文字大小 `font-size`
+- 设置粗体 `font-weight`
+- 颜色 `color`
+- 阴影效果 `text-shadow`
+- 大小写转换 `text-transform`
+- 文本缩进 `text-indent`
+- 垂直对齐 `vertical-align`
+- 文本流入方向 `direction`
+- 文本修饰（下划线等）`text-decoration`
+- 空格处理方式 `white-space`
+- 字内换行 `word-break`
+- 行高 `line-height`
+
+![](https://ww1.sinaimg.cn/large/005YhI8igy1fv5cl4suecj30ow0bv74q)
+- 字间距 `letter-spacing`
+- 词间距 `word-spacing`
