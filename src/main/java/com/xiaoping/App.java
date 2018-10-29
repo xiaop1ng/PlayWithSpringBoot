@@ -16,7 +16,6 @@ import org.springframework.cache.annotation.EnableCaching;
 import java.net.InetSocketAddress;
 
 @SpringBootApplication
-@EnableCaching
 public class App implements CommandLineRunner{
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
