@@ -13,6 +13,18 @@
 		<version>2.0.1.RELEASE</version>
 	</parent>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Finchley.SR2</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<!-- SpringBoot web starter -->
 		<dependency>
@@ -25,6 +37,16 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- SpringCloud -->
+		<!--<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>-->
 
 		<!-- SpringBoot jetty starter -->
 		<dependency>
