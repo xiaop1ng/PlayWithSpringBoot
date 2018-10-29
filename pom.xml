@@ -56,6 +56,12 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
+		<!-- redis starter -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
 		<!-- SpringBoot 开发工具包 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
