@@ -16,3 +16,9 @@ Spring Cloud 是基于 SpringBoot 的。
 ### 分布式系统中的常见模式
 > 例如：配置管理（configuration management），服务发现（service discovery），断路器（circuit breakers），智能路由（ intelligent routing），微代理（micro-proxy），控制总线（control bus），一次性令牌（ one-time tokens），全局锁（global locks），领导选举（leadership election），分布式会话（distributed sessions），集群状态（cluster state）
 
+### Spring Cloud Context
+应用程序上下文服务
+
+### Bootstrap 应用程序上下文
+使用 `bootstrap.yml` 保持引导程序和主要上下文配置很好的分开
+
