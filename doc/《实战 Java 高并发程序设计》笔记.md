@@ -253,3 +253,6 @@ wait() 和 notify() 是 `Object` 对象中的两个方法，作用于线程中�
 
 - JDK 对线程池的支持
 
+`ThreadPoolExecutor` 表示一个线程池，`Executors` 扮演着线程池工厂的角色
+`ThreadPoolExecutor` 类实现了 `Executor` 接口，通过这个接口，任何 `Runnable` 的对象均可被 `ThreadPoolExecutor` 线程池调度。
+
