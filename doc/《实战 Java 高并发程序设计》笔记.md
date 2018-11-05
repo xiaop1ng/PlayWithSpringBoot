@@ -204,3 +204,13 @@ wait() 和 notify() 是 `Object` 对象中的两个方法，作用于线程中�
 
 > t1.setPriority(Thread.MIN_PRIORITY); // 1 设置优先级
 
+### 线程安全之 synchronized
+
+`synchronized` 关键字有多种用法
+- 指定加锁对象：对给定对象加锁
+- 直接作用于实例方法：对当前实例加锁
+- 直接作用于静态方法：相当于对当前类加锁
+
+除了用于线程同步、确保线程安全外，`synchronized` 还可以保证线程间的可见性和有序性。换言之，被 `synchronized` 限制的多个线程是串行执行的。
+
+
