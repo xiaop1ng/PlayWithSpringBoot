@@ -213,4 +213,10 @@ wait() 和 notify() 是 `Object` 对象中的两个方法，作用于线程中�
 
 除了用于线程同步、确保线程安全外，`synchronized` 还可以保证线程间的可见性和有序性。换言之，被 `synchronized` 限制的多个线程是串行执行的。
 
+### 线程安全对象与线程不安全对象
 
+在并发编程下：
+
+- 使用安全的 `Vector` 替代 `ArrayList`
+
+- 使用安全的 `ConcurrentHashMap` 替代 `HashMap`
