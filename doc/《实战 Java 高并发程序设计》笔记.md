@@ -220,3 +220,36 @@ wait() 和 notify() 是 `Object` 对象中的两个方法，作用于线程中�
 - 使用安全的 `Vector` 替代 `ArrayList`
 
 - 使用安全的 `ConcurrentHashMap` 替代 `HashMap`
+
+
+### JDK 并发包之重入锁
+`java.util.concurrent.locks.ReentrantLock` 重入锁是 `synchronized`、`wait()`、`notify()` 的替代品（或者说是加强版）
+
+重入锁的灵活性更好，显式的调用 `lock()` 和 `unlock()` 来获取锁和释放锁，可以说让代码的可读性变强了。
+
+- 中断响应
+
+- 锁申请等待限时
+
+- 公平锁
+
+- 重入锁条件 `Condition`
+
+- 信号量 `Semaphore`
+
+- 读写锁 `ReadWriteLock`
+
+- 倒计时器 `CountDownLatch`
+
+- 循环栅栏 `CyclicBarrier`
+
+- 阻塞工具类 `LockSupport`
+
+
+### 线程池
+为了避免系统频繁的创建和销毁线程，我们可以让创建的线程复用。
+
+简而言之，使用线程池之后，创建线程变成了从线程池获得空闲线程，关闭线程变成了向线程池归还。
+
+- JDK 对线程池的支持
+
