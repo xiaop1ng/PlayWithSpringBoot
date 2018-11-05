@@ -24,7 +24,6 @@
 临界区表示一种公共资源或者说是共享数据，可被多个线程使用。但是每一次只能有一个线程使用它，一旦临界区的资源被占用，其他线程要想使用这个资源就必须等待。
 
 ### 阻塞和非阻塞
-
 阻塞和非阻塞通常形容多线程间的相互影响。
 
 - 阻塞(Blocking)：当一个线程占用了临界区的资源，其他的所有的线程都在这个临界区等待，导致线程挂起，这种情况就是阻塞。
@@ -63,7 +62,6 @@
 和 Amdahl 定律一样，Gustafson 定律也试图说明处理器个数、串行比例和加速比的关系，不过 G 定律提供了一个不同的视角。
 
 ### Java 内存模型(JMM)
-
 并行程序比串行程序复杂得多，其中一个很重要的原因是并发程序下的数据访问的一致性和安全性将会受到严重挑战。JMM 就是为了解决多线程间有效的、正确地协同工作。
 
 > JMM 的关键技术点都是围绕着多线程的原子性、可见性和有序性来建立的。
@@ -72,6 +70,100 @@
 
 - 可见性(Visibility)：可见性是指当一个线程修改了某一个共享变量的值，其他线程是否能够立即知道这个修改。
 
-- 有序性(Ordering)：有序性是最难理解的
+- 有序性(Ordering)：有序性是最难理解的，出现的原因可能是由于指令重排。
 
+> 注：指令重排可以保证串行语义一致，但没有义务保证多线程的语义也一致。
+
+### 关于进程
+进程(Process)是计算机中的程序关于某数据集合上的一次运动活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。
+
+在当代的面向线程设计的计算机结构中，进程是线程的容器。
+
+用专业点的术语来说，线程就是轻量级的进程，是程序执行的最小单位。使用多线程而不是多进程去进行并发程序的设计，是因为线程间的切换和调度的成本远远小于进程。
+
+### 线程的状态
+线程的所有状态都在 `Thread` 中的 `State` 枚举中定义
+
+```
+public enum State {
+    /**
+     * Thread state for a thread which has not yet started.
+     */
+    NEW,
+
+    /**
+     * Thread state for a runnable thread.  A thread in the runnable
+     * state is executing in the Java virtual machine but it may
+     * be waiting for other resources from the operating system
+     * such as processor.
+     */
+    RUNNABLE,
+
+    /**
+     * Thread state for a thread blocked waiting for a monitor lock.
+     * A thread in the blocked state is waiting for a monitor lock
+     * to enter a synchronized block/method or
+     * reenter a synchronized block/method after calling
+     * {@link Object#wait() Object.wait}.
+     */
+    BLOCKED,
+
+    /**
+     * Thread state for a waiting thread.
+     * A thread is in the waiting state due to calling one of the
+     * following methods:
+     * <ul>
+     *   <li>{@link Object#wait() Object.wait} with no timeout</li>
+     *   <li>{@link #join() Thread.join} with no timeout</li>
+     *   <li>{@link LockSupport#park() LockSupport.park}</li>
+     * </ul>
+     *
+     * <p>A thread in the waiting state is waiting for another thread to
+     * perform a particular action.
+     *
+     * For example, a thread that has called <tt>Object.wait()</tt>
+     * on an object is waiting for another thread to call
+     * <tt>Object.notify()</tt> or <tt>Object.notifyAll()</tt> on
+     * that object. A thread that has called <tt>Thread.join()</tt>
+     * is waiting for a specified thread to terminate.
+     */
+    WAITING,
+
+    /**
+     * Thread state for a waiting thread with a specified waiting time.
+     * A thread is in the timed waiting state due to calling one of
+     * the following methods with a specified positive waiting time:
+     * <ul>
+     *   <li>{@link #sleep Thread.sleep}</li>
+     *   <li>{@link Object#wait(long) Object.wait} with timeout</li>
+     *   <li>{@link #join(long) Thread.join} with timeout</li>
+     *   <li>{@link LockSupport#parkNanos LockSupport.parkNanos}</li>
+     *   <li>{@link LockSupport#parkUntil LockSupport.parkUntil}</li>
+     * </ul>
+     */
+    TIMED_WAITING,
+
+    /**
+     * Thread state for a terminated thread.
+     * The thread has completed execution.
+     */
+    TERMINATED;
+}
+```
+
+### 线程的创建
+- Thread()
+- Thread(Runnable target)
+
+> 注：这里执行 start()，会开启一个新线程，然后调用 run()
+需要注意的是 run() 可以直接被访问到，但是直接调用他只会在当前线程中串行执行 run() 中的代码。
+
+### 线程的终止
+一般来说，线程在执行完毕后就会结束，无须手动关闭。但是凡事都有例外，有些服务端的后台线程可能常驻系统，他们的执行体本省就是个无穷循环。
+
+Thread 类中有提供一个 stop() ，但是上面已经打上了废弃的注解并说明 `This method is inherently unsafe.`。使用 stop 方法时，会直接终止线程，并释放线程所持有的锁。而这些锁恰恰是用来维持对象一致性的。
+
+所以不要随便使用 stop() 来终止一个线程。那么我们应该如何终止线程了，解决方法很简单，将何时结束线程的问题丢给线程自身管理，在循环体中设定一个标志位，然后提供一个 break 掉循环体的标志位
+
+### wait & notify
 
