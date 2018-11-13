@@ -2,6 +2,8 @@
 
 Maven 是一个项目管理工具，可以对 Java 项目进行构建、依赖管理。
 
+> 一个更正式的 Apache Maven 的定义： Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。
+
 Maven 提倡一个共同的标准目录结构
 
 - /src/main/java 项目的 java 源码
