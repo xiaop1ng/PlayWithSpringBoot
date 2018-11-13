@@ -17,3 +17,7 @@
 `Ctrl + K` 下一个匹配项
 
 `Alt + Shift + R` 变量重命名
+
+`Ctrl + Shift + X` 字母转大写
+
+`Ctrl + Shift + Y` 字母转小写
