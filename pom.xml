@@ -222,10 +222,15 @@
 		</dependency>
 
 		<!-- memcached -->
-		<dependency>
+		<!--<dependency>
 			<groupId>spy</groupId>
 			<artifactId>memcached</artifactId>
 			<version>2.4rc1</version>
+		</dependency>-->
+		<dependency>
+			<groupId>com.google.code.maven-play-plugin.spy</groupId>
+			<artifactId>memcached</artifactId>
+			<version>2.4.2</version>
 		</dependency>
 
 	</dependencies>
