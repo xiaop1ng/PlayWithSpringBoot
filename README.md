@@ -19,6 +19,8 @@
 
 
 # History
+2017-12-24: 添加了 mq 的 starter
+
 2018-10-29: 添加了 redis 的 starter
 
 2018-09-03: memcached

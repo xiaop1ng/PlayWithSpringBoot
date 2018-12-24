@@ -52,6 +52,12 @@ spring:
       max-idle: 10
       min-idle: 0
     timeout: 6000
+  # rabbitMQ
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: spring
+    password: spring
 
 # info 配置项（/actuator/info）
 info:
