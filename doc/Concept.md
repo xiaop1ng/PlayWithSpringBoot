@@ -2,7 +2,7 @@
 
 > 生活中，我们描述一个人能力不够，或者全无能力的时候，经常这么说：xxx 在 yyy 方面根本没概念。 ——《新生》
 
-- CGI: Common Gateway Interface 公共网关接口
+- CGI: Common Gateway Interface 公共网关接口。CGI 应用程序能与浏览器进行交互,还可通过数据库API 与数据库服务器等外部数据源进行通信,从数据库服务器中获取数据。
 
-
+- Copyleft: 著佐权 Copyright: 著作权
 
