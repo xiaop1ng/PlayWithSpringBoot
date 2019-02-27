@@ -121,6 +121,46 @@ Maven 有三个标准的生命周期
 </build>
 ```
 
+### Maven 常用命令
+
+`mvn clean`
+
+> 清理（删除 target 目录下编译内容），如果不执行 clean，可能会出现最新修改的内容没有执行的情况。
+
+`mvn compile`
+
+> 编译项目,将源文件编辑成二进制文件。
+
+`mvn package`
+
+> 打包发布，一般针对不同的项目，如果是web项目会打包成 war 包。jar 项目会打包成 jar 包。
+
+`mvn package -Dmaven.test.skip=ture`
+
+> 打包时跳过测试
+
+`mvn deploy`
+
+> 将快照（snapshot）版本更新到 nexus
+
+`mvn test`
+
+> 执行 src 下 test 目录下的所有测试用例
+
+`mvn install`
+
+> 在本地 Repository 中安装 jar
+
+`mvn release:prepare`
+
+> 准备发布 release 版本，生成 release.properties，并将 snapshot 版本代码提交到 svn 的 tag 目录形成 release 版
+
+`mvn release:rollback`
+
+> 在我们 prepare 的时候出现报错之后，首先执行 rollback 来回滚。因为 prepare 之后会有中间代码生成。会将 scm 和 version 修改，只有回滚以后才能将 prepare 变更的内容恢复到执行之前的状态。
 
 
+`mvn release:perform`
+
+> 发布 release 版本到 nexus，prepare 执行成功以后，只是修改了本地文件和 svn 中的 tag 文件，但是 nexus 依然没有变化的，所以执行 perform 才能将版本发布到 nexus 中。
 
