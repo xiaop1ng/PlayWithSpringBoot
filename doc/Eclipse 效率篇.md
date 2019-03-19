@@ -35,3 +35,5 @@
 `Ctrl + Shift + X` 字母转大写
 
 `Ctrl + Shift + Y` 字母转小写
+
+`Alt +Shift + R` 修改变量名
