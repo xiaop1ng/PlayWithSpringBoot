@@ -35,13 +35,13 @@ public class FileUploadController {
                 return Rs.ok(saveFile.getName());
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                return Rs.errorMsg("上传失败," + e.getMessage());
+                return Rs.errMsg("上传失败," + e.getMessage());
             } catch (IOException e) {
                 e.printStackTrace();
-                return Rs.errorMsg("上传失败," + e.getMessage());
+                return Rs.errMsg("上传失败," + e.getMessage());
             }
         } else {
-            return Rs.errorMsg("上传失败，因为文件为空.");
+            return Rs.errMsg("上传失败，因为文件为空.");
         }
 
     }
