@@ -62,5 +62,4 @@ String signature = HMACSHA256(
   secret);
 ```
 
-
-
+同样我们使用这个方法来验，签名可以有效防止数据被篡改。
