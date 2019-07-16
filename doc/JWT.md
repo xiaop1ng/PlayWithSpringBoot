@@ -63,3 +63,16 @@ String signature = HMACSHA256(
 ```
 
 同样我们使用这个方法来验，签名可以有效防止数据被篡改。
+
+
+
+### jwt 的使用
+
+通常我们会将 token 存放在 HTTP 请求头的 `Authorization` 中
+
+```
+Authorization: Bearer <token>
+```
+
+
+
