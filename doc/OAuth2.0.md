@@ -21,4 +21,12 @@ OAuth 允许用户提供一个 Token，而不是用户名和密码来访问他�
 
 > 注意：不管是哪一种授权方式，第三方应用需要提前在系统中备案获取：客户端 ID（Client ID）和密钥（Client Secret）
 
-Web 应用中最常见的是授权码（authorization-code）这种方式
+Web 应用中最常见的是授权码（authorization-code）这种方式，安全性也最高
+
+
+
+# ref
+
+- <http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html> 
+- <https://oauth.net/2/> 
+
