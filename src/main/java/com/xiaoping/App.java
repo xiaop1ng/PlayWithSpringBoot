@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 
 import java.net.InetSocketAddress;
@@ -27,6 +28,7 @@ public class App implements CommandLineRunner{
     	// SpringApplication 将引导我们的应用，启动 Spring，相应地启动被自动配置的 Tomcat web 服务器。
     	// 我们需要将 App.class 作为参数传递给 run 方法，以此告诉 SpringApplication 谁是主要的 Spring 组件，并传递 args 数组以暴露所有的命令行参数。
         SpringApplication.run(App.class, args);
+        logger.info("已启动！");
     }
 
     // 注意这里的 run 方法是重载自 CommandLineRunner

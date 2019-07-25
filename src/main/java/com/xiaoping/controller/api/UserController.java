@@ -22,12 +22,21 @@ public class UserController {
     @PostMapping("/signup")
     public Rs register(@RequestParam String username, @RequestParam String password){
         if(userService.findByName(username) != null) {
-            return Rs.errorMsg("username had register");
+            return Rs.errMsg("username had register");
         }
         User user = userService.register(new User(username, DigestUtils.md5DigestAsHex(password.getBytes())));
         if(user != null) {
             return Rs.ok(user);
         }
-        return Rs.errorMsg("register fail.");
+        return Rs.errMsg("register fail.");
     }
+
+    @PostMapping("/sign")
+    public Rs sign(@RequestParam String username, @RequestParam String password,
+                   @RequestParam String email, @RequestParam String code) {
+
+
+        return Rs.ok();
+    }
+
 }

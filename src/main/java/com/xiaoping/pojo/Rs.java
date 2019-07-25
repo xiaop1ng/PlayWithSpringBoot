@@ -4,9 +4,12 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Rs {
 
+	private static Logger logger = LoggerFactory.getLogger(Rs.class);
 	// 定义jackson对象
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -19,6 +22,24 @@ public class Rs {
 	// 响应中的数据
 	private Object data;
 
+	public final static int ERROR_CODE_OK = 0;
+
+	public final static int ERROR_CODE_BAD_REQUEST = 400;
+
+	public final static int ERROR_CODE_UNAUTHORIZED = 401;
+
+	public final static int ERROR_CODE_FORBIDDEN = 403;
+
+	public final static int ERROR_CODE_NOT_FOUND = 404;
+
+	public final static int ERROR_CODE_SERVER_ERROR = 500;
+
+	public final static String MSG_SUCCESS = "success";
+
+	public final static String MSG_ERROR = "error";
+
+	public final static String MSG_FAIL = "fail";
+
 
 	public static Rs build(Integer err, String msg, Object data) {
 		return new Rs(err, msg, data);
@@ -26,6 +47,10 @@ public class Rs {
 
 	public static Rs ok(Object data) {
 		return new Rs(data);
+	}
+
+	public static Rs ok(Object data, String msg) {
+		return new Rs(ERROR_CODE_OK, msg, data);
 	}
 
 	public static Rs ok() {
@@ -36,40 +61,41 @@ public class Rs {
 		return new Rs(err, msg, null);
 	}
 
-	public static Rs errorMsg(String msg) {
-		return new Rs(500, msg, null);
+	public static Rs errMsg(String msg) {
+		return new Rs(ERROR_CODE_SERVER_ERROR, msg, null);
 	}
 
-	public static Rs errorMap(Object data) {
-		return new Rs(501, "error", data);
+	public static Rs errMap(Object data) {
+		return new Rs(ERROR_CODE_SERVER_ERROR, MSG_ERROR, data);
 	}
 
-	public static Rs errorTokenMsg(String msg) {
-		return new Rs(502, msg, null);
+	public static Rs errTokenMsg(String msg) {
+		return new Rs(ERROR_CODE_UNAUTHORIZED, msg, null);
 	}
 
-	public static Rs errorException(String msg) {
-		return new Rs(555, msg, null);
+	public static Rs errException(Exception e) {
+		logger.error(e.getMessage(), e);
+		return new Rs(ERROR_CODE_SERVER_ERROR, e.getMessage(), null);
 	}
 
-	public Rs() {
+	private Rs() {
 
 	}
 
-	public Rs(Integer err, String msg, Object data) {
+	private Rs(Integer err, String msg, Object data) {
 		this.err = err;
 		this.msg = msg;
 		this.data = data;
 	}
 
-	public Rs(Object data) {
-		this.err = 200;
-		this.msg = "OK";
+	private Rs(Object data) {
+		this.err = ERROR_CODE_OK;
+		this.msg = MSG_SUCCESS;
 		this.data = data;
 	}
 
 	public Boolean isOK() {
-		return this.err == 0;
+		return ERROR_CODE_OK == this.err;
 	}
 
 	public Integer getErr() {
