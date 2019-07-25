@@ -1,11 +1,11 @@
 package com.xiaoping.pojo;
 
-import java.util.List;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class Rs {
 
@@ -59,6 +59,10 @@ public class Rs {
 	
 	public static Rs err(Integer err, String msg) {
 		return new Rs(err, msg, null);
+	}
+
+	public static Rs errParamer(String msg) {
+		return new Rs(ERROR_CODE_BAD_REQUEST, msg, null);
 	}
 
 	public static Rs errMsg(String msg) {
