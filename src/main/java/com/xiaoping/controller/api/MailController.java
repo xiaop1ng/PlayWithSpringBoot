@@ -38,7 +38,7 @@ public class MailController {
     }
 
     @GetMapping("/sendTick")
-    public Rs sendTick(@RequestParam String email) {
+    public Rs sendTick(@RequestParam(required = false) String email) {
         if ( !StringHelper.isEmail(email) ) {
             return Rs.errParamer("非法参数：邮箱不正确");
         }

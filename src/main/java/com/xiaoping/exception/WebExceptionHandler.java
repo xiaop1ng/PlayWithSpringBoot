@@ -1,23 +1,20 @@
 package com.xiaoping.exception;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.xiaoping.pojo.Rs;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 @ControllerAdvice
 public class WebExceptionHandler {
 
 	@ExceptionHandler(value = Exception.class)
-	public Object errorHandler(HttpServletRequest req, HttpServletResponse res, Exception e) {
-		e.printStackTrace();
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("ex", e.getMessage());
-		mav.setViewName("error");
-		return mav;
-		
+	@ResponseBody
+	public Rs errorHandler(HttpServletRequest req, HttpServletResponse res, Exception e) {
+		return Rs.errMsg("系统错误");
 	}
 }

@@ -2,6 +2,7 @@ package com.xiaoping.pojo;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xiaoping.utils.DataRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -98,9 +99,9 @@ public class Rs {
 		this.data = data;
 	}
 
-	public Boolean isOK() {
-		return ERROR_CODE_OK == this.err;
-	}
+//	public Boolean isOK() {
+//		return ERROR_CODE_OK == this.err;
+//	}
 
 	public Integer getErr() {
 		return err;
@@ -119,6 +120,9 @@ public class Rs {
 	}
 
 	public Object getData() {
+		if(null == data) {
+			return new DataRow();
+		}
 		return data;
 	}
 
