@@ -35,6 +35,9 @@ public class Rs {
 
 	public final static int ERROR_CODE_SERVER_ERROR = 500;
 
+	// 业务异常
+	public final static int ERROR_CODE_BIZ = 1001;
+
 	public final static String MSG_SUCCESS = "success";
 
 	public final static String MSG_ERROR = "error";

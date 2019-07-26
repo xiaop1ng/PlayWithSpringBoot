@@ -5,7 +5,7 @@ USE `school`;
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
-  `user_id` varchar(32) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ID',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `user_name` varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
   `password` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '密码',
   `display_name` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '昵称',

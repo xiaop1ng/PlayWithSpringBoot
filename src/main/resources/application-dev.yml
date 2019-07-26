@@ -10,6 +10,8 @@ upload:
 
 # 禁用缓存
 spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
   # 配置 thymeleaf 在开发环境禁用缓存
   thymeleaf:
     cache: false
@@ -56,8 +58,8 @@ spring:
   rabbitmq:
     host: 127.0.0.1
     port: 5672
-    username: spring
-    password: spring
+    username: guest
+    password: guest
 
 # info 配置项（/actuator/info）
 info:

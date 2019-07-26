@@ -4,10 +4,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class DataRow extends HashMap {
 
     private static Logger logger = LoggerFactory.getLogger(DataRow.class);
+
+    public DataRow() {}
+
+    public DataRow(Map map) {
+        map.forEach((key, val) -> {
+            this.set(key.toString(), val);
+        });
+    }
 
     public void set(String name, String value) {
         if (name == null || name.equals(""))
