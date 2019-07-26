@@ -162,7 +162,7 @@ public class BaseBizController implements BaseController {
 
     @Override
     public Map getParamMap() {
-        // request 中防止重名参数问题，所以把 value 做成了数组，我们这里不考虑参数重名问题
+        // request.getParameterMap 防止重名参数问题，所以把 value 做成了数组，我们这里不考虑参数重名问题
         Map<String, String[]> parameterMap = request.getParameterMap();
         Map<String, String> retMap = new HashMap<>();
         parameterMap.forEach((key, val) ->{
