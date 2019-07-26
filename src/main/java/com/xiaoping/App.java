@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 
 import java.net.InetSocketAddress;
+import java.util.HashMap;
 
 @SpringBootApplication
 @EnableCaching
