@@ -1,5 +1,8 @@
 package com.xiaoping.exception;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.xiaoping.constant.Constans;
 import com.xiaoping.pojo.Rs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +28,11 @@ public class WebExceptionHandler {
 		if (e instanceof InvokeException) {
 			InvokeException ex = (InvokeException)e;
 			return Rs.err(ex.getErr(), ex.getMessage());
+		} else if (e instanceof JWTVerificationException) {
+			return Rs.err(Rs.ERROR_CODE_UNAUTHORIZED, "验证授权出错！");
+		} else if (e instanceof TokenExpiredException) {
+			res.setHeader(Constans.HEADER_AUTHORIZATION, null);
+			throw new InvokeException(Rs.ERROR_CODE_AUTHORIZED_TIMEOUT, "会话已过期，请重新登录！");
 		}
 		return Rs.errMsg("系统错误");
 	}

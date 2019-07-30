@@ -1,6 +1,8 @@
 package com.xiaoping.base.impl;
 
 import com.xiaoping.base.BaseController;
+import com.xiaoping.exception.InvokeException;
+import com.xiaoping.pojo.Rs;
 import com.xiaoping.utils.StringHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,6 +87,124 @@ public class BaseBizController implements BaseController {
         return result;
     }
 
+    @Override
+    public String requireStringParam(String paramName) {
+        return requireStringParam(paramName, paramName + " is required.");
+    }
+
+    @Override
+    public String requireStringParam(String paramName, String tips) {
+        String result = getStringParam(paramName);
+        if(StringHelper.isEmpty(result)) {
+            throw new InvokeException(Rs.ERROR_CODE_NOT_REQUIRED_PARAM, tips);
+        }
+        return result;
+    }
+
+    @Override
+    public int getIntParam(String paramName) {
+        return parseIntParam(paramName, 0);
+    }
+
+    @Override
+    public int getIntParam(String paramName, int defaultValue) {
+        return parseIntParam(paramName, defaultValue);
+    }
+
+    @Override
+    public int requireIntParam(String paramName) {
+        return requireIntParam(paramName, paramName + " is required.", paramName + " is not a number.");
+    }
+
+    @Override
+    public int requireIntParam(String paramName, String tipsEmpty, String tipsNaN) {
+        String result = request.getParameter(paramName);
+        if(StringHelper.isEmpty(result)) {
+            throw new  InvokeException(Rs.ERROR_CODE_NOT_REQUIRED_PARAM, tipsEmpty);
+        }
+        int value;
+        try{
+            value = Integer.parseInt(result);
+        } catch (Exception ex) {
+            logger.debug("参数`" + paramName + "`对应的值`" + result + "`不是数字，返回0", ex);
+            throw new  InvokeException(Rs.ERROR_CODE_PARAM_ERROR, tipsNaN);
+        }
+        return value;
+    }
+
+    @Override
+    public long getLongParam(String paramName) {
+        return parseLongParam(paramName, 0);
+    }
+
+    @Override
+    public long getLongParam(String paramName, long defaultValue) {
+        return parseLongParam(paramName, defaultValue);
+    }
+
+    @Override
+    public long requireLongParam(String paramName) {
+        return requireLongParam(paramName, paramName + " is required.", paramName + " is not a number.");
+    }
+
+    @Override
+    public long requireLongParam(String paramName, String tipsEmpty, String tipsNaN) {
+        String result = request.getParameter(paramName);
+        if(StringHelper.isEmpty(result)) {
+            throw new  InvokeException(Rs.ERROR_CODE_NOT_REQUIRED_PARAM, tipsEmpty);
+        }
+        long value;
+        try{
+            value = Long.parseLong(result);
+        } catch (Exception ex) {
+            logger.debug("参数`" + paramName + "`对应的值`" + result + "`不是数字，返回0", ex);
+            throw new  InvokeException(Rs.ERROR_CODE_PARAM_ERROR, tipsNaN);
+        }
+        return value;
+    }
+
+    @Override
+    public double getDoubleParam(String paramName) {
+        return parseDoubleParam(paramName, 0);
+    }
+
+    @Override
+    public double getDoubleParam(String paramName, double defaultValue) {
+        return parseDoubleParam(paramName, defaultValue);
+    }
+
+    @Override
+    public double requireDoubleParam(String paramName) {
+        return requireDoubleParam(paramName, paramName + " is required.", paramName + " is not a number.");
+    }
+
+    @Override
+    public double requireDoubleParam(String paramName, String tipsEmpty, String tipsNaN) {
+        String result = request.getParameter(paramName);
+        if(StringHelper.isEmpty(result)) {
+            throw new  InvokeException(Rs.ERROR_CODE_NOT_REQUIRED_PARAM, tipsEmpty);
+        }
+        double value;
+        try{
+            value = Double.parseDouble(result);
+        } catch (Exception ex) {
+            logger.debug("参数`" + paramName + "`对应的值`" + result + "`不是数字，返回0", ex);
+            throw new  InvokeException(Rs.ERROR_CODE_PARAM_ERROR, tipsNaN);
+        }
+        return value;
+    }
+
+    @Override
+    public Map getParamMap() {
+        // request.getParameterMap 防止重名参数问题，所以把 value 做成了数组，我们这里不考虑参数重名问题
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        Map<String, String> retMap = new HashMap<>();
+        parameterMap.forEach((key, val) ->{
+            retMap.put(key, val[0]);
+        });
+        return retMap;
+    }
+
     private int parseIntParam(String paramName, int defaultValue) {
         String result = request.getParameter(paramName);
         if(StringHelper.isEmpty(result)) {
@@ -130,44 +250,4 @@ public class BaseBizController implements BaseController {
         return value;
     }
 
-    @Override
-    public int getIntParam(String paramName) {
-        return parseIntParam(paramName, 0);
-    }
-
-    @Override
-    public int getIntParam(String paramName, int defaultValue) {
-        return parseIntParam(paramName, defaultValue);
-    }
-
-    @Override
-    public long getLongParam(String paramName) {
-        return parseLongParam(paramName, 0);
-    }
-
-    @Override
-    public long getLongParam(String paramName, long defaultValue) {
-        return parseLongParam(paramName, defaultValue);
-    }
-
-    @Override
-    public double getDoubleParam(String paramName) {
-        return parseDoubleParam(paramName, 0);
-    }
-
-    @Override
-    public double getDoubleParam(String paramName, double defaultValue) {
-        return parseDoubleParam(paramName, defaultValue);
-    }
-
-    @Override
-    public Map getParamMap() {
-        // request.getParameterMap 防止重名参数问题，所以把 value 做成了数组，我们这里不考虑参数重名问题
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        Map<String, String> retMap = new HashMap<>();
-        parameterMap.forEach((key, val) ->{
-            retMap.put(key, val[0]);
-        });
-        return retMap;
-    }
 }

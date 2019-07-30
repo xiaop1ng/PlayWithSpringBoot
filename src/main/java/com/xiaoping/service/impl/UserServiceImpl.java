@@ -6,6 +6,8 @@ import com.xiaoping.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -15,6 +17,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register(User user) {
         user.setDisplayName(user.getUserName());
+        user.setCreateTime(new Date());
+        user.setLastLoginTime(new Date());
         return userDao.save(user);
     }
 
@@ -36,5 +40,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByName(String username) {
         return userDao.findByUserName(username);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userDao.findByEmail(email);
     }
 }
