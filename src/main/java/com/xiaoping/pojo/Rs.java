@@ -38,6 +38,8 @@ public class Rs {
 
 	public final static int ERROR_CODE_PARAM_ERROR = -405;
 
+	public final static int ERROR_CODE_AUTHORIZED_TIMEOUT = -443;
+
 	public final static int ERROR_CODE_SERVER_ERROR = -500;
 
 	// 定义业务通用错误 -1000~-9999

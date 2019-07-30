@@ -1,5 +1,6 @@
 package com.xiaoping.exception;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.xiaoping.pojo.Rs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,8 @@ public class WebExceptionHandler {
 		if (e instanceof InvokeException) {
 			InvokeException ex = (InvokeException)e;
 			return Rs.err(ex.getErr(), ex.getMessage());
+		} else if (e instanceof JWTVerificationException) {
+			return Rs.err(Rs.ERROR_CODE_UNAUTHORIZED, "验证授权出错！");
 		}
 		return Rs.errMsg("系统错误");
 	}
