@@ -25,18 +25,29 @@ public class Rs {
 
 	public final static int ERROR_CODE_OK = 0;
 
-	public final static int ERROR_CODE_BAD_REQUEST = 400;
+	// 定义系统通用错误相关错误 -1~-999
+	public final static int ERROR_CODE_BAD_REQUEST = -400;
 
-	public final static int ERROR_CODE_UNAUTHORIZED = 401;
+	public final static int ERROR_CODE_UNAUTHORIZED = -401;
 
-	public final static int ERROR_CODE_FORBIDDEN = 403;
+	public final static int ERROR_CODE_NOT_REQUIRED_PARAM = -402;
 
-	public final static int ERROR_CODE_NOT_FOUND = 404;
+	public final static int ERROR_CODE_FORBIDDEN = -403;
 
-	public final static int ERROR_CODE_SERVER_ERROR = 500;
+	public final static int ERROR_CODE_NOT_FOUND = -404;
 
+	public final static int ERROR_CODE_PARAM_ERROR = -405;
+
+	public final static int ERROR_CODE_SERVER_ERROR = -500;
+
+	// 定义业务通用错误 -1000~-9999
 	// 业务异常
-	public final static int ERROR_CODE_BIZ = 1001;
+	public final static int ERROR_CODE_BIZ = -1001;
+
+	/**
+	 * 验证不通过
+	 */
+	public final static int ERROR_CODE_VALIDATION_NOT_PASS = -1002;
 
 	public final static String MSG_SUCCESS = "success";
 
