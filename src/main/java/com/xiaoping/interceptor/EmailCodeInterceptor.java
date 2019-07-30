@@ -3,6 +3,8 @@ package com.xiaoping.interceptor;
 import com.xiaoping.constant.Constans;
 import com.xiaoping.exception.InvokeException;
 import com.xiaoping.pojo.Rs;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpSession;
  * 邮件验证码拦截器
  */
 public class EmailCodeInterceptor implements HandlerInterceptor {
+
+    private Logger logger = LoggerFactory.getLogger(EmailCodeInterceptor.class);
 
     /**
      * 执行于请求发生之前
@@ -32,6 +36,7 @@ public class EmailCodeInterceptor implements HandlerInterceptor {
         if(null == sessionCode) {
             throw new InvokeException(Rs.ERROR_CODE_BAD_REQUEST, "请先发送验证码！");
         }
+        logger.info("baseCode: " + code + ", code" + sessionCode.toString());
         if(!sessionCode.toString().equalsIgnoreCase(code)) {
             throw new InvokeException(Rs.ERROR_CODE_VALIDATION_NOT_PASS, "验证码错误！");
         }
