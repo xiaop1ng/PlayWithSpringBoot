@@ -19,6 +19,8 @@
 
 
 # History
+- 添加了 JWT 认证方式
+
 - 升级 springboot 2.1.6.RELEASE
 
 - 添加了 mq 的 starter
