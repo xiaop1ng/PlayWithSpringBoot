@@ -21,11 +21,6 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
     private Logger logger = LoggerFactory.getLogger(AuthorizationInterceptor.class);
 
-
-    private String secret = "YebNZYFXAL1qUjX8516Mi";
-
-    private String issuer = "auth0";
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String authorization = request.getHeader(Constans.HEADER_AUTHORIZATION);
@@ -33,9 +28,9 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             throw new InvokeException(Rs.ERROR_CODE_UNAUTHORIZED, "no authorization.");
         }
         String token = authorization.replace("Bearer ", "");
-        Algorithm algorithm = Algorithm.HMAC256(secret);
+        Algorithm algorithm = Algorithm.HMAC256(Constans.JWT_SECRET);
         JWTVerifier verifier = JWT.require(algorithm)
-                .withIssuer(issuer)
+                .withIssuer(Constans.JWT_ISSUER)
                 .build(); //Reusable verifier instance
         DecodedJWT jwt = verifier.verify(token);
         Date expiresAt = jwt.getExpiresAt();

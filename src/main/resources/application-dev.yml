@@ -89,7 +89,3 @@ memcache:
   socketTO: 3000
   aliveCheck: true
 
-# 配置 jsonwebtoken 使用的 secret
-jwt:
-  secret: YebNZYFXAL1qUjX8516Mi
-  issuer: auth0
