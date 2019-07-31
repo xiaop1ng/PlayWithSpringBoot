@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
-
+/**
+ * JSONWEBTOKEN 验权拦截器
+ */
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
     private Logger logger = LoggerFactory.getLogger(AuthorizationInterceptor.class);
