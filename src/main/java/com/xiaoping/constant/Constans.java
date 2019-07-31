@@ -7,5 +7,10 @@ public class Constans {
      */
     public static final String EMAIL_CODE_SESSION_KEY = "session:email_code:";
 
+    /**
+     * 授权请求/响应头字段
+     */
     public static final String HEADER_AUTHORIZATION = "Authorization";
+
+
 }

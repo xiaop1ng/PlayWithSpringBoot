@@ -45,8 +45,8 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             throw new InvokeException(Rs.ERROR_CODE_AUTHORIZED_TIMEOUT, "会话已过期，请重新登录！");
         }
 
-        String username = jwt.getClaim("username").toString();
-        String id = jwt.getClaim("id").toString();
+        String username = jwt.getClaim("username").asString();
+        String id = jwt.getClaim("id").asString();
         request.setAttribute("_username", username);
         request.setAttribute("_id", id);
         return true;

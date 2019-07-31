@@ -205,6 +205,17 @@ public class BaseBizController implements BaseController {
         return retMap;
     }
 
+    /**
+     * 对 request 的 get/setAttribute 进行一层包装
+     */
+    protected Object attr(String key) {
+        return request.getAttribute(key);
+    }
+
+    protected void attr(String key, Object value) {
+        request.setAttribute(key, value);
+    }
+
     private int parseIntParam(String paramName, int defaultValue) {
         String result = request.getParameter(paramName);
         if(StringHelper.isEmpty(result)) {

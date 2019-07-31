@@ -28,11 +28,11 @@ public class WebExceptionHandler {
 		if (e instanceof InvokeException) {
 			InvokeException ex = (InvokeException)e;
 			return Rs.err(ex.getErr(), ex.getMessage());
-		} else if (e instanceof JWTVerificationException) {
-			return Rs.err(Rs.ERROR_CODE_UNAUTHORIZED, "验证授权出错！");
 		} else if (e instanceof TokenExpiredException) {
 			res.setHeader(Constans.HEADER_AUTHORIZATION, null);
-			throw new InvokeException(Rs.ERROR_CODE_AUTHORIZED_TIMEOUT, "会话已过期，请重新登录！");
+			return Rs.err(Rs.ERROR_CODE_AUTHORIZED_TIMEOUT, "会话已过期，请重新登录！");
+		} else if (e instanceof JWTVerificationException) {
+			return Rs.err(Rs.ERROR_CODE_UNAUTHORIZED, "验证授权出错！");
 		}
 		return Rs.errMsg("系统错误");
 	}
