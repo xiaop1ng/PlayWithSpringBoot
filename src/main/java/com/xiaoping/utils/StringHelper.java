@@ -730,7 +730,7 @@ public class StringHelper {
          */
         public static boolean isBlank(String str)
         {
-            boolean b = true;//20140507 modify by liwei 修复对" "为false的bug
+            boolean b = true;
             if ( str == null )
             {
                 b = true;
