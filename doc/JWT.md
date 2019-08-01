@@ -27,6 +27,8 @@ Header 部分是一个 JSON 对象，用来描述 JWT 的元数据
 }
 ```
 
+
+
 `alg` 描述签名的算法，默认是 HMAC SHA256（写成 HS256），`typ` 描述令牌的类型；最后会将该 JSON 进行 Base64URL 算法转成字符串
 
 
@@ -49,9 +51,20 @@ jti (JWT ID)：编号
 
 我们也可以将我们需要传递的信息（如：user_id 等用于标识用户的信息）放到这个 JSON 当中。
 
+```json
+{
+  "iss": "auth0",
+  "id": 2,
+  "exp": 1564554097,
+  "username": "xiaop1ng"
+}
+```
+
+
+
 #### Signature 部分
 
-首先，需要指定一个密钥（secret）,这个密钥只有服务器才知道（privateKey）。
+首先，需要指定一个密钥（secret）,这个密钥只有服务器才知道。
 
 这个私钥用来计算签名，使用 Header 中指定的算法（默认 HMAC SHA256 ）来产生签名。
 
@@ -62,7 +75,7 @@ String signature = HMACSHA256(
   secret);
 ```
 
-同样我们使用这个方法来验，签名可以有效防止数据被篡改。
+同样我们使用这个方法来验证签名，可以有效防止数据被篡改。
 
 
 
@@ -74,5 +87,6 @@ String signature = HMACSHA256(
 Authorization: Bearer <token>
 ```
 
+然后服务端需要验证用户的时候，获取 `Authorization` 中 token 部分进行签名验证即可。
 
 
