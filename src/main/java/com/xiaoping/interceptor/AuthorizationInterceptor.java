@@ -14,7 +14,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 
 /**
  * JSONWEBTOKEN 验权拦截器
@@ -35,12 +34,6 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
                 .withIssuer(Constans.JWT_ISSUER)
                 .build(); //Reusable verifier instance
         DecodedJWT jwt = verifier.verify(token);
-        Date expiresAt = jwt.getExpiresAt();
-        if(expiresAt.before(new Date())) {
-            // 已过期
-            response.setHeader(Constans.HEADER_AUTHORIZATION, null);
-            throw new InvokeException(Rs.ERROR_CODE_AUTHORIZED_TIMEOUT, "会话已过期，请重新登录！");
-        }
 
         String username = jwt.getClaim("username").asString();
         String id = jwt.getClaim("id").asString();
