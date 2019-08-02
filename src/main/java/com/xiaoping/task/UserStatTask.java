@@ -10,8 +10,8 @@ public class UserStatTask {
 
     private Logger logger = LoggerFactory.getLogger(UserStatTask.class);
 
-    // 5s 执行一次
-    @Scheduled(cron="0/5 * *  * * ? ")
+    // 120s 执行一次
+    @Scheduled(cron="0/120 * *  * * ? ")
     public void execute() {
         logger.info("UserStatTask execute invoke");
     }
