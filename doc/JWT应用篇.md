@@ -22,52 +22,52 @@
 
 
 ```java
-	// 授权请求/响应头字段
-	public static final String HEADER_AUTHORIZATION = "Authorization";
-	
-	// secret 一定不能让别人知道
-	public static final String JWT_SECRET = "YebNZYFXAL1qUjX8516Mi";
-	
-	// 签发人
-    public static final String JWT_ISSUER = "auth0";
+// 授权请求/响应头字段
+public static final String HEADER_AUTHORIZATION = "Authorization";
 
-	/**
-     * 登录
-     */
-    @PostMapping("/login")
-    public Rs login() {
+// secret 一定不能让别人知道
+public static final String JWT_SECRET = "YebNZYFXAL1qUjX8516Mi";
 
-        String username = requireStringParam("username");
-        String password = requireStringParam("password");
+// 签发人
+public static final String JWT_ISSUER = "auth0";
 
-        User checkByName = userService.findByName(username);
-        if(null == checkByName) {
-            throw new InvokeException(Rs.ERROR_CODE_BIZ, "该账户还未注册，请先注册！");
-        }
-        User user = new User();
-        user.setUserName(username);
-        user.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
-        User loginUser = userService.login(user);
+/**
+ * 登录
+ */
+@PostMapping("/login")
+public Rs login() {
 
-        if(null == loginUser) {
-            // 这里可以做一个错误次数放在 session 或者内存中，后面方便做登录限制
-            throw new InvokeException(Rs.ERROR_CODE_UNAUTHORIZED, "用户名或密码错误。");
-        }
+    String username = requireStringParam("username");
+    String password = requireStringParam("password");
 
-        // 生成 token 信息
-        Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
-        Date expireTime = new Date();
-        expireTime.setTime(expireTime.getTime() + 1000*60*30); // 半小时
-        String token = JWT.create()
-                .withIssuer(JWT_ISSUER) // 签发人
-                .withExpiresAt(expireTime) // 过期时间
-                .withClaim("username", loginUser.getUserName()) // 当前登录用户名
-                .withClaim("id", loginUser.getId()) // 用户编号
-                .sign(algorithm);
-        // 将签发好的 token 放到响应头中，当然也可放到 Cookie 或者响应对象中。
-        response.setHeader(HEADER_AUTHORIZATION, "Bearer " + token);
-        return Rs.ok(loginUser, "登录成功");
+    User checkByName = userService.findByName(username);
+    if(null == checkByName) {
+        throw new InvokeException(Rs.ERROR_CODE_BIZ, "该账户还未注册，请先注册！");
     }
+    User user = new User();
+    user.setUserName(username);
+    user.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
+    User loginUser = userService.login(user);
+
+    if(null == loginUser) {
+        // 这里可以做一个错误次数放在 session 或者内存中，后面方便做登录限制
+        throw new InvokeException(Rs.ERROR_CODE_UNAUTHORIZED, "用户名或密码错误。");
+    }
+
+    // 生成 token 信息
+    Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
+    Date expireTime = new Date();
+    expireTime.setTime(expireTime.getTime() + 1000*60*30); // 半小时
+    String token = JWT.create()
+        .withIssuer(JWT_ISSUER) // 签发人
+        .withExpiresAt(expireTime) // 过期时间
+        .withClaim("username", loginUser.getUserName()) // 当前登录用户名
+        .withClaim("id", loginUser.getId()) // 用户编号
+        .sign(algorithm);
+    // 将签发好的 token 放到响应头中，当然也可放到 Cookie 或者响应对象中。
+    response.setHeader(HEADER_AUTHORIZATION, "Bearer " + token);
+    return Rs.ok(loginUser, "登录成功");
+}
 ```
 
 当访问这个登录接口成功后，响应头中就会有了 `Authorization` 字段了。
@@ -77,29 +77,29 @@
  # 验证 token
 
 ```java
-	/**
-	 * test AuthorizationInterceptor
-	 */
-	@RequestMapping(value = "/auth", method = RequestMethod.GET)
-	@ResponseBody
-	Rs auth() {
-		String authorization = request.getHeader(HEADER_AUTHORIZATION);
-        if(StringHelper.isEmpty(authorization)) {
-            throw new InvokeException(Rs.ERROR_CODE_UNAUTHORIZED, "no authorization.");
-        }
-        String token = authorization.replace("Bearer ", "");
-        Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
-        JWTVerifier verifier = JWT.require(algorithm)
-                .withIssuer(Constans.JWT_ISSUER)
-                .build(); //Reusable verifier instance
-		// 这里的 verify(token) 会验证 token 的签名对不对，同时也会验证 token 是否过期
-        DecodedJWT jwt = verifier.verify(token);
-        String username = jwt.getClaim("username").asString();
-        String id = jwt.getClaim("id").asString();
-		
-		logger.info("[当前用户]" + username);
-		return Rs.ok("授权通过!");
-	}
+/**
+ * test AuthorizationInterceptor
+ */
+@RequestMapping(value = "/auth", method = RequestMethod.GET)
+@ResponseBody
+Rs auth() {
+    String authorization = request.getHeader(HEADER_AUTHORIZATION);
+    if(StringHelper.isEmpty(authorization)) {
+        throw new InvokeException(Rs.ERROR_CODE_UNAUTHORIZED, "no authorization.");
+    }
+    String token = authorization.replace("Bearer ", "");
+    Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
+    JWTVerifier verifier = JWT.require(algorithm)
+        .withIssuer(Constans.JWT_ISSUER)
+        .build(); //Reusable verifier instance
+    // 这里的 verify(token) 会验证 token 的签名对不对，同时也会验证 token 是否过期
+    DecodedJWT jwt = verifier.verify(token);
+    String username = jwt.getClaim("username").asString();
+    String id = jwt.getClaim("id").asString();
+
+    logger.info("[当前用户]" + username);
+    return Rs.ok("授权通过!");
+}
 ```
 
 顺便更新一下全局异常捕获类
