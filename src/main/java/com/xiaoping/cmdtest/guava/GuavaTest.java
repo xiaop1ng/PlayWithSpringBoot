@@ -35,10 +35,18 @@ public class GuavaTest {
 //        Preconditions.checkElementIndex(3, arr.length, "indexOfBound");
 
         List<Integer> list = Ints.asList(7,4,2,5,6,3,4,7,9,78,12,33,1);
+        // Ordering impl Comparator 用户排序
         Ordering<Comparable> ordering = Ordering.natural();
         Collections.sort(list, ordering);
         System.out.println("[sort list:]");
         System.out.println(list);
+        Collections.sort(list, ordering.reverse());
+        System.out.println("[reverse sort list:]");
+        System.out.println(list);
+        Integer min = ordering.min(list);
+        Integer max = ordering.max(list);
+        System.out.println("[min]" + min);
+        System.out.println("[max]" + max);
 
     }
 
