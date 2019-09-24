@@ -1,5 +1,6 @@
 package com.xiaoping.cmdtest.guava;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Ordering;
@@ -13,6 +14,11 @@ public class GuavaTest {
     public static void main(String[] args) {
         Integer val1 = null;
         Integer val2 = 5;
+
+        // 对于应用业务代码而言，Null 往往是导致混乱，疑难问题和模糊语义的元凶
+        // 不要在 Set 中使用 null，或者把 null 作为 map 的键。使用特殊值代表 null 会让查找操作的语义更清晰
+        // Optional<T> 表示可能为 null 的 T 型引用
+
         Optional<Integer> op1 = Optional.fromNullable(val1);
         Optional<Integer> op2 = Optional.fromNullable(val2);
         boolean isPresend1 = op1.isPresent();
@@ -47,6 +53,11 @@ public class GuavaTest {
         Integer max = ordering.max(list);
         System.out.println("[min]" + min);
         System.out.println("[max]" + max);
+
+        boolean flag1 = Objects.equal("a", "a"); // true
+        boolean flag2 = Objects.equal(null, "a"); // false
+        System.out.println("[flag1]" + flag1);
+        System.out.println("[flag2]" + flag2);
 
     }
 
