@@ -34,7 +34,6 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
                 .withIssuer(Constans.JWT_ISSUER)
                 .build(); //Reusable verifier instance
         DecodedJWT jwt = verifier.verify(token);
-
         String username = jwt.getClaim("username").asString();
         String id = jwt.getClaim("id").asString();
         request.setAttribute("_username", username);

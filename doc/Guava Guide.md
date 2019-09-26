@@ -28,10 +28,29 @@
 
 `Throwables` 异常传播，用于判断异常类型并且重新传播异常
 
+`Forwarding` 装饰器
 
+`PeekingIterator`、`AbstractIterator`、`AbstractSequentialIterator` 迭代器
 
+`Functions` 函数与 `Predicates` 断言
 
+`ListenableFuture` 并发处理 `Service` 服务框架
 
+`Joiner` 连接器
+
+> Joiner.on(",").skipNulls().join(Ints.asList(3, 2, 1));
+
+`Splitter` 拆分器
+
+>  Splitter.on(",").trimResults().omitEmptyStrings().splitToList(str);
+
+`CharMatcher` 字符串处理
+
+> CharMatcher.whitespace().removeFrom("    h    e llo  "); // hello
+
+`Range` 区间
+
+> Range.closed(0, 10); // 前闭后闭
 
 # ref
 - Source: [https://github.com/google/guava](https://github.com/google/guava)

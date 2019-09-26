@@ -1,9 +1,9 @@
 package com.xiaoping.cmdtest.guava;
 
-import com.google.common.base.Objects;
-import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
+import com.google.common.base.*;
 import com.google.common.collect.Ordering;
+import com.google.common.collect.Range;
+import com.google.common.math.IntMath;
 import com.google.common.primitives.Ints;
 
 import java.util.Collections;
@@ -58,6 +58,50 @@ public class GuavaTest {
         boolean flag2 = Objects.equal(null, "a"); // false
         System.out.println("[flag1]" + flag1);
         System.out.println("[flag2]" + flag2);
+
+
+        Joiner joiner = Joiner.on(",").skipNulls();
+
+        String items = joiner.join("'hello'", "'fine'", "'thanks'", null, "'goodbye'");
+
+        System.out.println(items); // 'hello','fine','thanks','goodbye'
+
+        String joinStr = Joiner.on(",").skipNulls().join(Ints.asList(3, 2, 1));
+
+        System.out.println(joinStr);
+
+        List<String> strList = Splitter.on(",").trimResults().omitEmptyStrings().splitToList(joinStr);
+
+        strList.forEach(item -> {
+            System.out.println(item);
+        });
+
+        String r = CharMatcher.whitespace().removeFrom("    h    e llo  ");
+        System.out.println(r); // hello
+
+
+        Range<Integer> range = Range.closed(0, 10); // 前闭后闭
+        System.out.println(range.contains(1)); // true
+        System.out.println(range.contains(0)); // true
+        System.out.println(range.contains(-1)); // false
+        System.out.println(range.contains(10)); // true
+        System.out.println(range.contains(190)); // false
+
+        Range<Integer> range1 = Range.open(15, 99); // 前开后开
+//        Range<Integer> intersection = range.intersection(range1); // 交集 (5..10]
+//        System.out.println("intersection->" +  intersection);
+        Range<Integer> span = range.span(range1); // 跨度（区间） [0..99)
+        System.out.println("span->" +  span);
+        Range<Integer> gap = range.gap(range1); // 间隙 (10..15]
+        System.out.println("gap->" +  gap);
+
+        // 读 ByteSource CharSource
+        // 写 ByteSink CharSink
+        System.out.println("[sum]" + Integer.MAX_VALUE + 1); // 忽略溢出 21474836471
+        int sum = IntMath.checkedAdd(Integer.MAX_VALUE, 1); // 异常 ArithmeticException
+        System.out.println(sum); // safe sum
+
+
 
     }
 
