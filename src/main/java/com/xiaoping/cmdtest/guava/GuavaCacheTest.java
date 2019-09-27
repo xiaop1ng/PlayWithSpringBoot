@@ -15,7 +15,7 @@ public class GuavaCacheTest {
     public static void main(String[] args) {
 
         LoadingCache<String, JsonObject> cacheObj = CacheBuilder.newBuilder()
-                .maximumSize(1000)
+                .maximumSize(1000) // 对象大小 1000 b
                 .expireAfterWrite(3, TimeUnit.SECONDS) // 写入 3s 后过期
                 .build(new CacheLoader<String, JsonObject>() {
                     @Override
