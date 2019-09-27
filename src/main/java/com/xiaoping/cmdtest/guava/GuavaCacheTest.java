@@ -5,6 +5,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.gson.JsonObject;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -32,6 +33,13 @@ public class GuavaCacheTest {
             while (true) {
                 System.out.println( cacheObj.get("first") );
                 Thread.sleep(1000); // 1s
+                Random random = new Random();
+                int i = random.nextInt(100);
+                if (i%2 == 0) {
+                    System.out.println("手动删除缓存");
+                    cacheObj.invalidateAll(); // 所有清除
+//                    cacheObj.invalidate("first"); // 清除某个键
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,20 +47,25 @@ public class GuavaCacheTest {
 
 //        cache invoke key is -> first
 //        {"name":"tom","key":"first"}
+//        手动删除缓存
+//        cache invoke key is -> first
 //        {"name":"tom","key":"first"}
-//        {"name":"tom","key":"first"}
+//        手动删除缓存
 //        cache invoke key is -> first
 //        {"name":"tom","key":"first"}
 //        {"name":"tom","key":"first"}
 //        {"name":"tom","key":"first"}
 //        cache invoke key is -> first
 //        {"name":"tom","key":"first"}
-//        {"name":"tom","key":"first"}
-//        {"name":"tom","key":"first"}
+//        手动删除缓存
 //        cache invoke key is -> first
 //        {"name":"tom","key":"first"}
 //        {"name":"tom","key":"first"}
+//        手动删除缓存
+//        cache invoke key is -> first
 //        {"name":"tom","key":"first"}
+//        {"name":"tom","key":"first"}
+//        手动删除缓存
 //        cache invoke key is -> first
 //        {"name":"tom","key":"first"}
     }
