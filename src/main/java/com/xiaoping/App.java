@@ -3,8 +3,8 @@ package com.xiaoping;
 import com.xiaoping.netty.NettyConfig;
 import com.xiaoping.netty.ServerBootStrap;
 import io.netty.channel.ChannelFuture;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +20,7 @@ import java.net.InetSocketAddress;
 @EnableScheduling
 public class App implements CommandLineRunner{
 
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
+    private static final Logger logger = Logger.getLogger(App.class);
 
     @Autowired
     private ServerBootStrap ws;

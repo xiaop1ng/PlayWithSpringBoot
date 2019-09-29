@@ -4,8 +4,7 @@ import com.xiaoping.base.BaseController;
 import com.xiaoping.exception.InvokeException;
 import com.xiaoping.pojo.Rs;
 import com.xiaoping.utils.StringHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +24,7 @@ public class BaseBizController implements BaseController {
 
     protected HttpSession session;
 
-    private Logger logger = LoggerFactory.getLogger(BaseBizController.class);
+    private Logger logger = Logger.getLogger(BaseBizController.class);
 
     /**
      * spring ModelAttribute

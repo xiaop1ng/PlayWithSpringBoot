@@ -4,16 +4,16 @@ import com.xiaoping.base.impl.BaseBizController;
 import com.xiaoping.constant.Constans;
 import com.xiaoping.pojo.Rs;
 import com.xiaoping.utils.CaptchaHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 @Controller
 public class ImageCodeController extends BaseBizController {
 
-    private Logger logger = LoggerFactory.getLogger(ImageCodeController.class);
+    private Logger logger = Logger.getLogger(ImageCodeController.class);
 
     @GetMapping("/image/captcha")
     public void captcha() {

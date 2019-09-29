@@ -5,8 +5,7 @@ import com.xiaoping.constant.Constans;
 import com.xiaoping.pojo.Rs;
 import com.xiaoping.utils.RandomHelper;
 import com.xiaoping.utils.StringHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -25,7 +24,7 @@ public class MailController extends BaseBizController {
     @Value("${spring.mail.username}")
     private String mailUser;
 
-    private Logger logger = LoggerFactory.getLogger(MailController.class);
+    private Logger logger = Logger.getLogger(MailController.class);
 
     @GetMapping("/send")
     public Rs sendMail(){

@@ -23,7 +23,7 @@ public class GuavaListenableFutureTest {
                 MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
 
         ListenableFuture<Map> future = service.submit(new Callable() {
-
+            // async invoke
             @Override
             public Map call() throws Exception {
                 Thread.sleep(3000); // sleep 3s
@@ -37,10 +37,10 @@ public class GuavaListenableFutureTest {
 
         System.out.println("balabala...");
 
-        Futures.addCallback(future, new FutureCallback<Map>() {
+        FutureCallback<Map> callback = new FutureCallback<Map>() {
 
             public void onSuccess(@Nullable Map o) {
-                System.out.println(String.valueOf( o.get("err") ) + "|" +  String.valueOf(o.get("msg")) );
+                System.out.println(String.valueOf(o.get("err")) + "|" + String.valueOf(o.get("msg")));
                 System.out.println("success");
             }
 
@@ -48,7 +48,9 @@ public class GuavaListenableFutureTest {
             public void onFailure(Throwable throwable) {
                 System.out.println("failed");
             }
-        }, service);
+        };
+
+        Futures.addCallback(future, callback, service);
 
         System.out.println("do something!");
 

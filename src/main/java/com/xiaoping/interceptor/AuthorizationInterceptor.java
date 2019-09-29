@@ -8,8 +8,7 @@ import com.xiaoping.constant.Constans;
 import com.xiaoping.exception.InvokeException;
 import com.xiaoping.pojo.Rs;
 import com.xiaoping.utils.StringHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
-    private Logger logger = LoggerFactory.getLogger(AuthorizationInterceptor.class);
+    private Logger logger = Logger.getLogger(AuthorizationInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {

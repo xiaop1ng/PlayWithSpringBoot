@@ -1,7 +1,7 @@
 package com.xiaoping.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.Logger;
 
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
@@ -15,7 +15,7 @@ public class StringHelper {
         /**
          * StringHelper 日志
          */
-        private static Logger logger = LoggerFactory.getLogger(StringHelper.class);
+        private static Logger logger = Logger.getLogger(StringHelper.class);
 
         /**
          * 描述： 构造方法

@@ -3,14 +3,13 @@ package com.xiaoping.controller.api;
 import com.xiaoping.base.impl.BaseBizController;
 import com.xiaoping.exception.InvokeException;
 import com.xiaoping.pojo.Rs;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HomeController extends BaseBizController {
 
-	private Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private Logger logger = Logger.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	String home() {

@@ -9,8 +9,7 @@ import com.xiaoping.exception.InvokeException;
 import com.xiaoping.pojo.Rs;
 import com.xiaoping.service.UserService;
 import com.xiaoping.utils.StringHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +26,7 @@ public class UserController extends BaseBizController {
     @Autowired
     private UserService userService;
 
-    private Logger logger = LoggerFactory.getLogger(UserController.class);
+    private Logger logger = Logger.getLogger(UserController.class);
 
     /**
      * 注册
