@@ -8,7 +8,7 @@
 
 ### 主要的类
 
-- LoggerContext
+- LoggerContext 日志系统中的一个锚点
 - Logger
 - LoggerConfig
 - Configuration
@@ -19,5 +19,28 @@
 LoggerContext 并且从中获取 Logger。如果 Logger 必须被创建，那么它会和包含这些信息的 LogConfig 相关联：
 a）与 Logger 相同的名称；b）父包的名称；c）根 LoggerConfig。LoggerConfig 对象根据配置中的 Logger 声明而创建。
 LoggerConfig 与实际处理 LogEvent 事件的 Appender 关联。
+
+### 获取 logger
+
+> LogManger.getLogger(CLASS_NAME);
+
+当然这是一种惯用的命名策略，Log4j 并不限制 Logger 的可能性，也可以自由命名
+
+### 日志级别
+
+- TRACE
+- DEBUG
+- INFO
+- WARN
+- ERROR
+- FATAL
+- 自定义日志级别
+
+### Layout
+
+输出格式
+
+Log4j 带有很多不同的 Layout 以支持诸如 JSON、XML、HTML 等用例
+
 
 
