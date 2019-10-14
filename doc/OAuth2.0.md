@@ -103,6 +103,8 @@ Web 应用中最常见的是授权码（authorization-code）这种方式，安�
 
 （H）授权服务器对客户端进行身份验证并验证刷新令牌，如果有效，则颁发新的访问令牌（以及可选的新的刷新令牌）。
 
+
+
 # ref
 
 - <http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html> 
