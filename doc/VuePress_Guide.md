@@ -27,3 +27,8 @@ vuepress build .
 
 然后就可以愉悦的看到页面的效果了。
 
+
+在 Netlify 中, 创建一个新的 GitHub 项目，使用以下设置：
+Build Command: npm run build:docs 或者 yarn build:docs
+Publish directory: docs/.vuepress/dist
+点击 deploy 按钮！
