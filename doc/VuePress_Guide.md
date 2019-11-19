@@ -32,3 +32,7 @@ vuepress build .
 Build Command: npm run build:docs 或者 yarn build:docs
 Publish directory: docs/.vuepress/dist
 点击 deploy 按钮！
+
+## 添加插件
+
+> npm i @vuepress/plugin-blog
