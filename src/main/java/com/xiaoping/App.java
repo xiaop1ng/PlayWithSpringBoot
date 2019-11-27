@@ -3,21 +3,23 @@ package com.xiaoping;
 import com.xiaoping.netty.NettyConfig;
 import com.xiaoping.netty.ServerBootStrap;
 import io.netty.channel.ChannelFuture;
-
 import org.apache.log4j.Logger;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.net.InetSocketAddress;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = RabbitAutoConfiguration.class)
 @EnableCaching
 // 开启定时任务
 @EnableScheduling
+@MapperScan("com.xiaoping.mapper")
 public class App implements CommandLineRunner{
 
     private static final Logger logger = Logger.getLogger(App.class);

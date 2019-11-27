@@ -17,7 +17,7 @@ spring:
     cache: false
   # 数据源
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/school
+    url: jdbc:mysql://127.0.0.1:3306/db_playground
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
