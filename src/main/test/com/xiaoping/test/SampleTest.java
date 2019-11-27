@@ -3,7 +3,6 @@ package com.xiaoping.test;
 import com.xiaoping.entity.TUser;
 import com.xiaoping.mapper.UserMapper;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,11 +28,44 @@ public class SampleTest {
     @Test
     public void testSelect() {
         System.out.println("test invoke!");
-
         List<TUser> userList = userMapper.selectList(null);
-        Assert.assertEquals(5, userList.size());
         userList.forEach(System.out::println);
     }
+
+    @Test
+    public void addTUser() {
+        System.out.println("注册用户开始");
+        for (int i = 0; i < 30; i++) {
+            TUser user = new TUser();
+            user.setName("小月num" + i);
+            user.setAge(20 + i);
+            user.setEmail("xiaojia" + i + "@thinkive.com");
+            int ret = userMapper.insert(user);
+            System.out.println("[ret]" + ret);
+        }
+
+    }
+
+    @Test
+    public void updateTUser() {
+        TUser user = new TUser();
+        user.setId(1199575052459196417L);
+        user.setName("小月月");
+        int ret = userMapper.updateById(user);
+        System.out.println("[ret]" + ret);
+    }
+
+
+    @Test
+    public void delTUser() {
+
+    }
+
+    @Test
+    public void getTUserPage() {
+
+    }
+
 
     @After
     public void after() {

@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 /**
  * Springboot 启动类 for Test
  */
-@SpringBootApplication(exclude = RabbitAutoConfiguration.class)
+@SpringBootApplication(exclude = {RabbitAutoConfiguration.class})
 @MapperScan("com.xiaoping.mapper")
 public class AppTest {
 
