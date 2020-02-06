@@ -31,6 +31,12 @@ git reset HEAD 文件名    # 撤销添加
 将 Git_Guide.md 文件添加到暂存区
 
 
+## git commit 
+
+在将修改添加到暂存区之后，接下来的操作就是提交，所以每当 git add 完之后的操作就是 git commit
+
+> git commit -m "添加了 git_guide"
+
 
 
 
