@@ -11,4 +11,27 @@ git add -A              # 添加所有文件（已有版本和为建版本的文
 git reset HEAD 文件名    # 撤销添加  
 ```
 
+### 添加某种类型的文件
+
+> git add *.md
+
+将 md 文件添加到暂存区
+
+
+### 添加文件夹
+
+> git add doc/
+
+将 doc 文件夹下的文件都添加到暂存区
+
+### 添加文件
+
+> git add doc/Git_Guide.md
+
+将 Git_Guide.md 文件添加到暂存区
+
+
+
+
+
 
