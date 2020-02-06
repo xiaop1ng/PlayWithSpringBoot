@@ -3,14 +3,14 @@ package com.xiaoping.pojo;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xiaoping.utils.DataRow;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
 public class Rs {
 
-	private static Logger logger = LoggerFactory.getLogger(Rs.class);
+	private static final Logger logger = Logger.getLogger(Rs.class);
+
 	// 定义jackson对象
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 

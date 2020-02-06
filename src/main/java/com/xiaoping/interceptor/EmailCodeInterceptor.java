@@ -3,8 +3,7 @@ package com.xiaoping.interceptor;
 import com.xiaoping.constant.Constans;
 import com.xiaoping.exception.InvokeException;
 import com.xiaoping.pojo.Rs;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpSession;
  */
 public class EmailCodeInterceptor implements HandlerInterceptor {
 
-    private Logger logger = LoggerFactory.getLogger(EmailCodeInterceptor.class);
+    private Logger logger = Logger.getLogger(EmailCodeInterceptor.class);
 
     /**
      * 执行于请求发生之前

@@ -1,11 +1,10 @@
 package com.xiaoping.utils;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -25,7 +24,7 @@ public class FileHelper {
     /**
      * FileHelper 日志
      */
-    private static Logger logger = LoggerFactory.getLogger(FileHelper.class);
+    private static Logger logger = Logger.getLogger(FileHelper.class);
 
     /**
      * 获得文件的CRC32校验和

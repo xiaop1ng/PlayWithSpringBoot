@@ -1,6 +1,29 @@
 server:
-  port: 8080
+  port: 3000
 
 netty:
-  host: "127.0.0.1"
+  host: 127.0.0.1
   port: 9090
+
+upload:
+  rootpath: upload-dir
+
+# 禁用缓存
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  # 配置 thymeleaf 在开发环境禁用缓存
+  thymeleaf:
+    cache: false
+  # 数据源
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/db_playground
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    # 配置数据库连接池
+    druid:
+      initial-size: 50
+      max-active: 1000
+      min-idle: 50
+      max-wait: 60000

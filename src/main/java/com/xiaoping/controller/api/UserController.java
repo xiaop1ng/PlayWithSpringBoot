@@ -9,10 +9,8 @@ import com.xiaoping.exception.InvokeException;
 import com.xiaoping.pojo.Rs;
 import com.xiaoping.service.UserService;
 import com.xiaoping.utils.StringHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,13 +27,7 @@ public class UserController extends BaseBizController {
     @Autowired
     private UserService userService;
 
-    @Value("${jwt.secret}")
-    private String secret;
-
-    @Value("${jwt.issuer}")
-    private String issuer;
-
-    private Logger logger = LoggerFactory.getLogger(UserController.class);
+    private Logger logger = Logger.getLogger(UserController.class);
 
     /**
      * 注册
@@ -92,11 +84,11 @@ public class UserController extends BaseBizController {
         }
 
         // 生成 token 信息
-        Algorithm algorithm = Algorithm.HMAC256(secret);
+        Algorithm algorithm = Algorithm.HMAC256(Constans.JWT_SECRET);
         Date expireTime = new Date();
         expireTime.setTime(expireTime.getTime() + 1000*60*30); // 半小时
         String token = JWT.create()
-                .withIssuer(issuer) // 签发人
+                .withIssuer(Constans.JWT_ISSUER) // 签发人
                 .withExpiresAt(expireTime)
                 .withClaim("username", loginUser.getUserName())
                 .withClaim("id", loginUser.getId())

@@ -1,7 +1,7 @@
 package com.xiaoping.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.Logger;
 
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
@@ -15,7 +15,7 @@ public class StringHelper {
         /**
          * StringHelper 日志
          */
-        private static Logger logger = LoggerFactory.getLogger(StringHelper.class);
+        private static Logger logger = Logger.getLogger(StringHelper.class);
 
         /**
          * 描述： 构造方法
@@ -730,7 +730,7 @@ public class StringHelper {
          */
         public static boolean isBlank(String str)
         {
-            boolean b = true;//20140507 modify by liwei 修复对" "为false的bug
+            boolean b = true;
             if ( str == null )
             {
                 b = true;

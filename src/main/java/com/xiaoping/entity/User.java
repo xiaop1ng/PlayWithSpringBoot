@@ -1,5 +1,6 @@
 package com.xiaoping.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -22,9 +23,11 @@ public class User {
     private String introduce;
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date lastLoginTime;
 
     public User(String userName, String password, String displayName, String email, String phone, String protrait, String sex, String introduce) {

@@ -19,6 +19,15 @@
 
 
 # History
+
+- 升级 netty -> 4.1.43
+
+- 添加了 mybatis-plus 和 lombok
+
+- 测试使用 Guava
+
+- 添加了 JWT 认证方式
+
 - 升级 springboot 2.1.6.RELEASE
 
 - 添加了 mq 的 starter

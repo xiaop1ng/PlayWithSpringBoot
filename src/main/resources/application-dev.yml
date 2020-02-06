@@ -17,7 +17,7 @@ spring:
     cache: false
   # 数据源
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/school
+    url: jdbc:mysql://127.0.0.1:3306/db_playground?characterEncoding=UTF-8
     username: root
     password: 12345678
     driver-class-name: com.mysql.jdbc.Driver
@@ -89,7 +89,3 @@ memcache:
   socketTO: 3000
   aliveCheck: true
 
-# 配置 jsonwebtoken 使用的 secret
-jwt:
-  secret: YebNZYFXAL1qUjX8516Mi
-  issuer: auth0

@@ -2,25 +2,27 @@ package com.xiaoping;
 
 import com.xiaoping.netty.NettyConfig;
 import com.xiaoping.netty.ServerBootStrap;
-import io.lettuce.core.RedisClient;
 import io.netty.channel.ChannelFuture;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.net.InetSocketAddress;
-import java.util.HashMap;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = RabbitAutoConfiguration.class)
 @EnableCaching
+// 开启定时任务
+@EnableScheduling
+@MapperScan("com.xiaoping.mapper")
 public class App implements CommandLineRunner{
 
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
+    private static final Logger logger = Logger.getLogger(App.class);
 
     @Autowired
     private ServerBootStrap ws;
