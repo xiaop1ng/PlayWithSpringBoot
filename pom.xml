@@ -235,11 +235,11 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- lombok -->
-		<dependency>
+<!--		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
+		</dependency>-->
 		<!-- mybatis-plus -->
 		<dependency>
 			<groupId>com.baomidou</groupId>

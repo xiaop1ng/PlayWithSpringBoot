@@ -37,7 +37,35 @@ git reset HEAD 文件名    # 撤销添加
 
 > git commit -m "添加了 git_guide"
 
+## git pull
+
+从 git 仓库拉取最新的代码
+
+> git pull origin master
+
+## git push
+
+将修改提交到 git 仓库
+
+> git push origin master
 
 
+## git tag
+
+在软件发布时我们通常会给代码打上一个 tag, 以便回溯
+
+> git tag v1.0
+
+通过 `git tag` 查看我们会看到 v1.0 这个版本标记
+
+> git tag -a v1.1 -m "一个有备注的标记"
+
+通过 `git show` 来查看具体的标记信息
+
+> git show v1.1
+
+将某个标记下的修改提交到 git 仓库
+
+> git push origin v1.1
 
 
