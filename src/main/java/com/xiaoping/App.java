@@ -15,6 +15,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.net.InetSocketAddress;
 
+/**
+ * @EnableAutoConfiguration  由 @SpringBootApplication 引入，完成启动配置开启
+ */
 @SpringBootApplication(exclude = RabbitAutoConfiguration.class)
 @EnableCaching
 // 开启定时任务

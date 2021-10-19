@@ -9,5 +9,9 @@ public class Average {
         System.out.println( (v1 + v2)/2 ); // 溢出问题 -916269963
 
         System.out.println( v1 + (v2 - v1)/2 ); // 1231213685
+
+
+        // a = 6; b = 8; avg = 7
+        // (6-8)/2 + 8 = 7
     }
 }
