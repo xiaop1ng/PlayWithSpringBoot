@@ -5,7 +5,7 @@
 # Start
 > git clone https://github.com/xiaop1ng/PlayWithSpringBoot.git
 
-使用 `Maven` 构建项目，`main` 程序在 `com.xiaoping.App.java`
+使用 `Maven` 构建项目，`main` 程序在 `com.xiaoping.SpringbootApplication.java`
 
 
 注：
