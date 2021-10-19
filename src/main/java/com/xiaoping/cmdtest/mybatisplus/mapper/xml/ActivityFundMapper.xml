@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoping.cmdtest.mybatisplus.mapper.ActivityFundMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xiaoping.cmdtest.mybatisplus.entity.ActivityFund">
+        <id column="id" property="id" />
+        <result column="fund_code" property="fundCode" />
+        <result column="fund_name" property="fundName" />
+        <result column="is_delete" property="isDelete" />
+        <result column="fund_type" property="fundType" />
+        <result column="fund_url" property="fundUrl" />
+        <result column="subscribe_url" property="subscribeUrl" />
+        <result column="company" property="company" />
+        <result column="history" property="history" />
+        <result column="fund_image" property="fundImage" />
+        <result column="intro" property="intro" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, fund_code, fund_name, is_delete, fund_type, fund_url, subscribe_url, company, history, fund_image, intro, update_by, update_date
+    </sql>
+
+</mapper>

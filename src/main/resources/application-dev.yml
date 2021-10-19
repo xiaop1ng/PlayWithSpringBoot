@@ -19,7 +19,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/db_playground?characterEncoding=UTF-8
     username: root
-    password: 12345678
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     # 配置数据库连接池
     druid:
