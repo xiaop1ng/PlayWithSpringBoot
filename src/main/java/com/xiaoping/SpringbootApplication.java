@@ -16,6 +16,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import java.net.InetSocketAddress;
 
 /**
+ * Spring Boot 入口类
  * @EnableAutoConfiguration  由 @SpringBootApplication 引入，完成启动配置开启
  */
 @SpringBootApplication(exclude = RabbitAutoConfiguration.class)
